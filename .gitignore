@@ -1,0 +1,13 @@
+# OS / tooling
+.DS_Store
+.claude/
+.playwright-mcp/
+scratchpad/
+
+# Dev/iteration screenshots (not part of the site)
+/inaya-before-home.png
+/inaya-final-mobile*.png
+/inaya-upgraded-*.png
+
+# Unreferenced legacy hero (site uses inaya-hero-truck.jpg)
+assets/img/inaya-hero-truck.png

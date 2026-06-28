@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inaya Logistics — Homepage Concepts (Option 1 vs Option 2)</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <style>
+      :root {
+        --navy: #06245a;
+        --red: #d80f18;
+        --line: rgba(255, 255, 255, 0.16);
+        --bar-h: 64px;
+        --font: "Archivo", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; }
+      body {
+        font-family: var(--font);
+        background: var(--navy);
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .cmp-bar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: var(--bar-h);
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 0 16px;
+        background: var(--navy);
+        border-bottom: 1px solid var(--line);
+        z-index: 10;
+      }
+
+      .cmp-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+      }
+      .cmp-brand svg { height: 26px; width: auto; flex: none; }
+      .cmp-brand small {
+        display: block;
+        font-size: 0.6rem;
+        letter-spacing: 0.22em;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .cmp-toggle {
+        display: inline-flex;
+        margin: 0 auto;
+        padding: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+      }
+      .cmp-toggle button {
+        appearance: none;
+        cursor: pointer;
+        border: 0;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.78);
+        font-family: inherit;
+        font-weight: 900;
+        font-size: 0.86rem;
+        line-height: 1.05;
+        padding: 8px 20px;
+        border-radius: 999px;
+        transition: background 180ms ease, color 180ms ease, transform 120ms ease;
+      }
+      .cmp-toggle button span {
+        display: block;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        opacity: 0.7;
+        margin-top: 2px;
+      }
+      .cmp-toggle button.is-active {
+        background: var(--red);
+        color: #fff;
+      }
+      .cmp-toggle button.is-active span { opacity: 0.92; }
+      .cmp-toggle button:not(.is-active):hover { color: #fff; }
+      .cmp-toggle button:active { transform: translateY(1px); }
+      .cmp-toggle button:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 2px;
+      }
+
+      .cmp-open {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 0.82rem;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        transition: background 160ms ease;
+      }
+      .cmp-open:hover { background: rgba(255, 255, 255, 0.1); }
+      .cmp-open:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+      .cmp-stage {
+        position: fixed;
+        inset: var(--bar-h) 0 0 0;
+        width: 100%;
+        height: calc(100% - var(--bar-h));
+        border: 0;
+        background: #fff;
+        display: block;
+      }
+
+      /* tiny helper line under the bar, fades out */
+      .cmp-hint {
+        position: fixed;
+        top: calc(var(--bar-h) + 12px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9;
+        padding: 7px 16px;
+        background: rgba(6, 36, 90, 0.92);
+        color: #fff;
+        font-size: 0.78rem;
+        font-weight: 700;
+        border-radius: 999px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        pointer-events: none;
+        animation: hint 4.5s ease forwards;
+      }
+      @keyframes hint {
+        0%, 70% { opacity: 1; }
+        100% { opacity: 0; visibility: hidden; }
+      }
+
+      @media (max-width: 640px) {
+        :root { --bar-h: 58px; }
+        .cmp-brand small { display: none; }
+        .cmp-toggle button { padding: 7px 14px; font-size: 0.8rem; }
+        .cmp-toggle button span { display: none; }
+        .cmp-open { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cmp-hint { animation: none; }
+        .cmp-toggle button { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="cmp-bar">
+      <span class="cmp-brand">
+        <svg viewBox="0 0 64 40" fill="none" aria-hidden="true" focusable="false"><path d="M4 6 L22 20 L4 34" stroke="#d80f18" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 7 H50 a7 7 0 0 1 7 7 V26 a7 7 0 0 1 -7 7 H26 Z" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path d="M34 16 H49 M34 24 H49" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+        <span>INAYA<br><small>HOMEPAGE CONCEPTS</small></span>
+      </span>
+
+      <div class="cmp-toggle" role="group" aria-label="Choose a homepage direction">
+        <button type="button" data-opt="1" aria-pressed="true">Option 1<span>Split Diagonal · Light</span></button>
+        <button type="button" data-opt="2" aria-pressed="false">Option 2<span>Editorial · Dark</span></button>
+      </div>
+
+      <a class="cmp-open" id="openFull" href="index.html" target="_blank" rel="noopener">Open full ↗</a>
+    </header>
+
+    <div class="cmp-hint" id="hint">Toggle Option 1 / Option 2 to compare directions</div>
+
+    <iframe class="cmp-stage" id="stage" title="Homepage design preview" src="index.html"></iframe>
+
+    <script>
+      var OPTIONS = {
+        "1": "index.html",
+        "2": "new-homepage-design-direction.html"
+      };
+      var stage = document.getElementById("stage");
+      var openFull = document.getElementById("openFull");
+      var buttons = Array.prototype.slice.call(document.querySelectorAll(".cmp-toggle button"));
+
+      function select(opt, push) {
+        if (!OPTIONS[opt]) opt = "1";
+        var url = OPTIONS[opt];
+        if (stage.getAttribute("src") !== url) stage.setAttribute("src", url);
+        openFull.setAttribute("href", url);
+        buttons.forEach(function (b) {
+          var on = b.getAttribute("data-opt") === opt;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        if (push && ("#option-" + opt) !== window.location.hash) {
+          history.replaceState(null, "", "#option-" + opt);
+        }
+        document.title = "Inaya Logistics — Homepage Option " + opt;
+      }
+
+      buttons.forEach(function (b) {
+        b.addEventListener("click", function () { select(b.getAttribute("data-opt"), true); });
+      });
+
+      // keyboard: left/right arrows switch options
+      document.querySelector(".cmp-toggle").addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          var cur = document.querySelector(".cmp-toggle .is-active").getAttribute("data-opt");
+          select(cur === "1" ? "2" : "1", true);
+          document.querySelector(".cmp-toggle .is-active").focus();
+        }
+      });
+
+      var initial = (window.location.hash.match(/option-(\d)/) || [])[1] || "1";
+      select(initial, false);
+    </script>
+  </body>
+</html>
