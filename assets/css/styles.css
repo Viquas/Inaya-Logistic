@@ -2101,3 +2101,209 @@ html.lenis body { height: auto; }
 @media (max-width: 820px) {
   .ops-grid { grid-template-columns: 1fr; }
 }
+
+/* ===================================================================
+   v18 — Styled select control + 404 page
+   =================================================================== */
+
+/* Custom dropdown arrow so the select matches the styled inputs */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 42px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2306245a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+/* 404 / error page */
+.error-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100dvh - 72px);
+  display: grid;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(160deg, var(--navy) 0 58%, #0d3c83 100%);
+  color: var(--white);
+}
+
+.error-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 50% 40%, black, transparent 72%);
+  pointer-events: none;
+}
+
+.error-hero .container {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 60px 0;
+}
+
+.error-code {
+  font-size: clamp(6rem, 22vw, 13rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.28));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 4px;
+}
+
+.error-hero .eyebrow { color: rgba(255,255,255,0.9); justify-content: center; }
+
+.error-hero h1 {
+  color: var(--white);
+  max-width: 16ch;
+}
+
+.error-hero p {
+  max-width: 52ch;
+  margin: 0 auto 8px;
+  color: rgba(255,255,255,0.82);
+  font-size: 1.08rem;
+}
+
+.error-hero .hero-actions { justify-content: center; margin-top: 18px; }
+
+.error-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+
+.error-links a {
+  color: rgba(255,255,255,0.82);
+  font-weight: 800;
+  font-size: 0.92rem;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 140ms ease;
+}
+
+.error-links a:hover { color: var(--white); }
+
+@media (max-width: 680px) {
+  .error-hero .hero-actions { flex-direction: column; align-items: stretch; width: 100%; }
+}
+
+/* ===================================================================
+   Live lanes board (Option 3) — operational-intelligence element,
+   light theme, system-mono data. Status dots convey real lane state.
+   =================================================================== */
+.lanes-band { background: linear-gradient(180deg, var(--white), #f3f7fc); }
+.lanes-board {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+.lanes-row {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr 1fr 1.2fr;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+.lanes-row--head {
+  border-top: 0;
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.82);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+.lane-code { color: var(--navy); font-weight: 700; letter-spacing: 0.04em; }
+.lanes-row span:nth-child(2),
+.lanes-row span:nth-child(3) { color: var(--muted); }
+.lane-status { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; }
+.lane-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+.lane-status.on { color: #15924f; }
+.lane-status.load { color: #c2820e; }
+.lane-status.transit { color: var(--navy); }
+.lanes-row:not(.lanes-row--head):hover { background: #f8fbff; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lane-status.on::before,
+  .lane-status.transit::before { animation: lane-pulse 2.2s ease-out infinite; }
+}
+@keyframes lane-pulse {
+  0% { box-shadow: 0 0 0 0 currentColor; }
+  70% { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@media (max-width: 720px) {
+  .lanes-row { grid-template-columns: 1fr 1fr; gap: 4px 14px; padding: 14px 16px; font-size: 0.86rem; }
+  .lanes-row--head { display: none; }
+  .lane-code { grid-column: 1 / -1; font-size: 0.95rem; }
+  .lane-status { grid-column: 1 / -1; margin-top: 2px; }
+}
+
+/* stat-cell figure: number + unit inline (override .stat-cell span{display:block}) */
+.stat-cell b span { display: inline; }
+.stat-cell b .unit { display: inline; font-size: 0.46em; font-weight: 800; letter-spacing: 0; margin-left: 1px; }
+
+/* ===================================================================
+   Option 3 hero — live operational status chip (distinct identity)
+   =================================================================== */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 8px 16px;
+  background: rgba(6, 36, 90, 0.06);
+  border: 1px solid rgba(6, 36, 90, 0.14);
+  border-radius: 999px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.hs-dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #15924f;
+  flex: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hs-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #15924f;
+    animation: hs-ping 1.9s ease-out infinite;
+  }
+}
+@keyframes hs-ping {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(2.6); opacity: 0; }
+  100% { opacity: 0; }
+}

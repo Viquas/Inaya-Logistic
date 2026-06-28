@@ -167,6 +167,7 @@
       <div class="cmp-toggle" role="group" aria-label="Choose a homepage direction">
         <button type="button" data-opt="1" aria-pressed="true">Option 1<span>Split Diagonal · Light</span></button>
         <button type="button" data-opt="2" aria-pressed="false">Option 2<span>Editorial · Dark</span></button>
+        <button type="button" data-opt="3" aria-pressed="false">Option 3<span>Synthesis · Operational</span></button>
       </div>
 
       <a class="cmp-open" id="openFull" href="index.html" target="_blank" rel="noopener">Open full ↗</a>
@@ -179,7 +180,8 @@
     <script>
       var OPTIONS = {
         "1": "index.html",
-        "2": "new-homepage-design-direction.html"
+        "2": "new-homepage-design-direction.html",
+        "3": "option-3.html"
       };
       var stage = document.getElementById("stage");
       var openFull = document.getElementById("openFull");
@@ -208,8 +210,10 @@
       // keyboard: left/right arrows switch options
       document.querySelector(".cmp-toggle").addEventListener("keydown", function (e) {
         if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-          var cur = document.querySelector(".cmp-toggle .is-active").getAttribute("data-opt");
-          select(cur === "1" ? "2" : "1", true);
+          var cur = +document.querySelector(".cmp-toggle .is-active").getAttribute("data-opt");
+          var dir = e.key === "ArrowRight" ? 1 : -1;
+          var next = ((cur - 1 + dir + 3) % 3) + 1;
+          select(String(next), true);
           document.querySelector(".cmp-toggle .is-active").focus();
         }
       });
