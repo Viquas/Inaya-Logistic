@@ -4,9 +4,32 @@ const toggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector(".nav-links");
 
 if (toggle && navLinks) {
-  toggle.addEventListener("click", () => {
-    const open = document.body.classList.toggle("menu-open");
+  const setMenu = (open) => {
+    document.body.classList.toggle("menu-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
+
+  toggle.addEventListener("click", () => {
+    setMenu(!document.body.classList.contains("menu-open"));
+  });
+
+  // Close on link tap, Escape, or when resizing back to desktop width.
+  navLinks.addEventListener("click", (e) => {
+    if (e.target.closest("a")) setMenu(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("menu-open")) {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1040 && document.body.classList.contains("menu-open")) {
+      setMenu(false);
+    }
   });
 }
 

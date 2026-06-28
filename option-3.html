@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="theme-cobalt">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
     <meta name="twitter:image" content="assets/img/inaya-hero-truck.jpg">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/css/styles.css?v=20">
+    <link rel="stylesheet" href="assets/css/styles.css?v=23">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,7 +51,7 @@
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="index.html" aria-label="Inaya Logistics home">
-          <svg class="brand-svg" viewBox="0 0 64 40" fill="none" aria-hidden="true" focusable="false"><path d="M4 6 L22 20 L4 34" stroke="#d80f18" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 7 H50 a7 7 0 0 1 7 7 V26 a7 7 0 0 1 -7 7 H26 Z" stroke="#06245a" stroke-width="5" stroke-linejoin="round"/><path d="M34 16 H49 M34 24 H49" stroke="#06245a" stroke-width="4" stroke-linecap="round"/></svg><span class="brand-word">INAYA <small>LOGISTICS</small></span>
+          <img class="brand-img" src="assets/img/logo.png" alt="Inaya Logistics" onerror="this.remove()"><svg class="brand-svg" viewBox="0 0 64 40" fill="none" aria-hidden="true" focusable="false"><path d="M4 6 L22 20 L4 34" stroke="#d80f18" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 7 H50 a7 7 0 0 1 7 7 V26 a7 7 0 0 1 -7 7 H26 Z" stroke="#06245a" stroke-width="5" stroke-linejoin="round"/><path d="M34 16 H49 M34 24 H49" stroke="#06245a" stroke-width="4" stroke-linecap="round"/></svg><span class="brand-word">INAYA <small>LOGISTICS</small></span>
         </a>
         <div class="nav-links">
           <a href="index.html">Home</a>
@@ -70,32 +70,24 @@
     </header>
 
     <main id="main-content" tabindex="-1">
-      <section class="hero">
+            <section class="hero hero--video" aria-label="Inaya Logistics hero">
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/inaya-hero-truck.jpg" aria-hidden="true">
+          <source src="assets/video/inaya-hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-scrim" aria-hidden="true"></div>
         <div class="hero-inner">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <span class="hero-status"><span class="hs-dot" aria-hidden="true"></span>Now open for business &middot; PAN India</span>
-              <h1>Move business forward, <strong>on time.</strong></h1>
-              <p>Reliable container transport from Bengaluru to destinations across India.</p>
-              <div class="hero-actions">
-                <a class="button primary" href="contact.html">Get in Touch</a>
-                <a class="button secondary" href="fleet.html">View Fleet</a>
-              </div>
+          <div class="hero-copy on-video">
+            <span class="hero-status"><span class="hs-dot" aria-hidden="true"></span>Now open for business &middot; PAN India</span>
+            <h1>Move business forward, <strong>on time.</strong></h1>
+            <p>Reliable container transport from Bengaluru to destinations across India, with an owned fleet and trusted aggregator network.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="contact.html">Get in Touch</a>
+              <a class="button glass" href="fleet.html">View Fleet</a>
             </div>
-            <div class="hero-media" aria-label="Inaya Logistics truck on a city highway">
-              <div class="safety-badge">
-                <span class="shield">✓</span>
-                <div><b>Safe. Reliable.<br>On time. Every time.</b><span></span></div>
-              </div>
-              <div class="hero-photo">
-                <img src="assets/img/inaya-hero-truck.jpg" alt="White container truck on a modern highway" width="1400" height="788" fetchpriority="high" decoding="async">
-              </div>
-              <div class="route-ribbon">Bengaluru <span></span> Across India <span></span> PAN India</div>
-              <div class="hero-stats">
-                <div class="hero-stat"><b>7-32</b><span>ft container fleet</span></div>
-                <div class="hero-stat"><b>7</b><span>mile operations</span></div>
-                <div class="hero-stat"><b>PAN</b><span>India coverage</span></div>
-              </div>
+            <div class="hero-trust-row">
+              <span><b>7-32</b> ft fleet</span>
+              <span><b>7</b> mile services</span>
+              <span><b>PAN</b> India</span>
             </div>
           </div>
         </div>
@@ -488,6 +480,6 @@ l30 31 -38 32 c-25 21 -46 31 -60 28 -13 -2 -29 3 -40 15 -18 20 -11 34 21 40
     <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
     <script src="assets/js/vendor/lenis.min.js" defer></script>
     <script src="assets/js/motion.js?v=4" defer></script>
-    <script src="assets/js/main.js?v=5"></script>
+    <script src="assets/js/main.js?v=6"></script>
   </body>
 </html>
