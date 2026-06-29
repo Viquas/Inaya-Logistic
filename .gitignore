@@ -11,3 +11,4 @@ scratchpad/
 
 # Unreferenced legacy hero (site uses inaya-hero-truck.jpg)
 assets/img/inaya-hero-truck.png
+.vercel
