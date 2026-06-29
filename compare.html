@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inaya Logistics — Homepage Concepts (Option 1 vs Option 2)</title>
+    <title>Inaya Logistics — Homepage Concepts (Options 1–4)</title>
     <meta name="robots" content="noindex">
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
     <style>
@@ -165,23 +165,25 @@
       </span>
 
       <div class="cmp-toggle" role="group" aria-label="Choose a homepage direction">
-        <button type="button" data-opt="1" aria-pressed="true">Option 1<span>Split Diagonal · Light</span></button>
+        <button type="button" data-opt="1" aria-pressed="false">Option 1<span>Split Diagonal · Light</span></button>
         <button type="button" data-opt="2" aria-pressed="false">Option 2<span>Editorial · Dark</span></button>
         <button type="button" data-opt="3" aria-pressed="false">Option 3<span>Synthesis · Operational</span></button>
+        <button type="button" data-opt="4" aria-pressed="true">Option 4<span>Photo-led · Motion</span></button>
       </div>
 
-      <a class="cmp-open" id="openFull" href="index.html" target="_blank" rel="noopener">Open full ↗</a>
+      <a class="cmp-open" id="openFull" href="option-4.html" target="_blank" rel="noopener">Open full ↗</a>
     </header>
 
-    <div class="cmp-hint" id="hint">Toggle Option 1 / Option 2 to compare directions</div>
+    <div class="cmp-hint" id="hint">Toggle Option 1–4 to compare directions</div>
 
-    <iframe class="cmp-stage" id="stage" title="Homepage design preview" src="index.html"></iframe>
+    <iframe class="cmp-stage" id="stage" title="Homepage design preview" src="option-4.html"></iframe>
 
     <script>
       var OPTIONS = {
         "1": "index.html",
         "2": "new-homepage-design-direction.html",
-        "3": "option-3.html"
+        "3": "option-3.html",
+        "4": "option-4.html"
       };
       var stage = document.getElementById("stage");
       var openFull = document.getElementById("openFull");
@@ -212,13 +214,13 @@
         if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
           var cur = +document.querySelector(".cmp-toggle .is-active").getAttribute("data-opt");
           var dir = e.key === "ArrowRight" ? 1 : -1;
-          var next = ((cur - 1 + dir + 3) % 3) + 1;
+          var next = ((cur - 1 + dir + 4) % 4) + 1;
           select(String(next), true);
           document.querySelector(".cmp-toggle .is-active").focus();
         }
       });
 
-      var initial = (window.location.hash.match(/option-(\d)/) || [])[1] || "1";
+      var initial = (window.location.hash.match(/option-(\d)/) || [])[1] || "4";
       select(initial, false);
     </script>
   </body>
