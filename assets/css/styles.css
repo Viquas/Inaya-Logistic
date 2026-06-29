@@ -2453,3 +2453,16 @@ select {
 .white-panel h3 { color: var(--navy); }
 /* lanes header labels legible on navy (override the muted nth-child rule) */
 .lanes-row--head span { color: rgba(255, 255, 255, 0.85) !important; }
+
+/* ------------------------------------------------------------------
+   Lighter large-display type (client request: big fonts feel too bold).
+   Archivo variable covers 400-900, so 400 (regular) is the lightest.
+   Small UI (nav, buttons, labels) keeps its weight for legibility.
+   ------------------------------------------------------------------ */
+h1, h2, h3,
+.page-hero h1,
+.hero-stat b, .fleet-card b, .metric b, .stat-cell b,
+.statement h3, .announce-figure, .error-code {
+  font-weight: 400;
+}
+
