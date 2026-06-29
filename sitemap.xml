@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace YOUR-DOMAIN with the live domain (same placeholder as robots.txt). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://YOUR-DOMAIN/index.html</loc><priority>1.0</priority></url>
+  <url><loc>https://YOUR-DOMAIN/services.html</loc><priority>0.9</priority></url>
+  <url><loc>https://YOUR-DOMAIN/fleet.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-DOMAIN/coverage.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-DOMAIN/industries.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-DOMAIN/clients.html</loc><priority>0.8</priority></url>
+  <url><loc>https://YOUR-DOMAIN/about.html</loc><priority>0.7</priority></url>
+  <url><loc>https://YOUR-DOMAIN/contact.html</loc><priority>0.9</priority></url>
+</urlset>
