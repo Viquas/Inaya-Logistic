@@ -159,12 +159,15 @@ header.site{position:sticky;top:0;z-index:60}
 .clients-head .eyebrow{justify-content:center}
 .clients-head h2{margin-top:16px}
 .logo-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line-l);border-radius:16px;overflow:hidden;background:#fff}
-.bg-navy .logo-wall,.bg-deep .logo-wall{border-color:var(--line-d);background:rgba(255,255,255,.03)}
-.logo-cell{display:flex;align-items:center;justify-content:center;padding:30px 24px;min-height:118px;border-right:1px solid var(--line-l);border-bottom:1px solid var(--line-l);transition:background .25s ease}
-.bg-navy .logo-cell,.bg-deep .logo-cell{border-color:var(--line-d)}
+.bg-navy .logo-wall,.bg-deep .logo-wall{border-color:var(--line-l);background:#fff}
+.logo-cell{display:flex;align-items:center;justify-content:center;padding:26px 22px;min-height:124px;border-right:1px solid var(--line-l);border-bottom:1px solid var(--line-l);transition:background .25s ease}
+.bg-navy .logo-cell,.bg-deep .logo-cell{border-color:var(--line-l)}
 .logo-cell:hover{background:var(--paper)}
-.bg-navy .logo-cell:hover,.bg-deep .logo-cell:hover{background:rgba(255,255,255,.05)}
-.logo-cell svg,.logo-cell img{max-height:34px;width:auto;opacity:.9}
+.bg-navy .logo-cell:hover,.bg-deep .logo-cell:hover{background:var(--paper)}
+.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;transition:transform .25s ease}
+.logo-cell:hover img{transform:scale(1.05)}
+.logo-cell--tile img{max-height:58px;max-width:92%;border-radius:11px}
+.logo-cell svg{max-height:34px;width:auto;opacity:.9}
 .logo-cell .wordmark{font-family:var(--f-disp);font-weight:700;font-size:1.25rem;letter-spacing:-.01em;color:var(--navy)}
 .bg-navy .logo-cell .wordmark,.bg-deep .logo-cell .wordmark{color:#dbe4f2}
 .logo-cell .wordmark .accent{color:var(--red)}
