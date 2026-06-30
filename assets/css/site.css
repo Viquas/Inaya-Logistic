@@ -469,10 +469,22 @@ footer.site{padding-top:clamp(56px,7vw,88px);padding-bottom:40px}
   .foot-top{grid-template-columns:1fr 1fr}
   .foot-brand{grid-column:1/-1}
 }
+@media(max-width:640px){
+  /* hide the status ribbon (top bar) on mobile */
+  .ribbon{display:none}
+  /* fleet ruler: float the use-case label below each bar so it stays
+     legible — inside narrow bars the white label overflowed onto the
+     white card and disappeared */
+  .ruler .frow{align-items:start;padding:6px 0 26px}
+  .ruler .frow .ft{padding-top:4px}
+  .ruler .fbar .use{position:absolute;left:0;top:calc(100% + 5px);color:var(--steel-2);white-space:nowrap}
+}
 @media(max-width:560px){
   .stats-grid,.mode-grid,.mode-grid--3,.ind-grid,.val-grid,.body-types,.pillars{grid-template-columns:1fr}
+  /* reset any card that spans 2 columns on wider grids — otherwise the
+     span forces a phantom second track and squishes sibling cards */
+  .mode-grid .mode{grid-column:auto!important}
   .field-row{grid-template-columns:1fr}
-  .ribbon .r-right{display:none}
   .hero-meta{gap:18px}
   .logo-wall{grid-template-columns:repeat(2,1fr)}
   .foot-bot{flex-direction:column;align-items:flex-start}
