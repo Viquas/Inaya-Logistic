@@ -12,3 +12,8 @@ scratchpad/
 # Unreferenced legacy hero (site uses inaya-hero-truck.jpg)
 assets/img/inaya-hero-truck.png
 .vercel
+
+# Image-processing tooling (throwaway venv + working previews + raw source tiles)
+.imgvenv/
+scripts/
+assets/img/fleet-raw/
