@@ -188,4 +188,28 @@
       if(msg && msg.classList.contains('show')){ msg.className='quote-msg'; msg.textContent=''; }
     });
   });
+
+  /* ---- arrive-on-hash: honour #quote (and any #anchor) with the
+     sticky-nav offset, so contact CTAs from other pages land on the
+     form instead of tucking it under the fixed header. Uses Lenis
+     when present, native scroll otherwise. ---- */
+  function scrollToHash(smooth){
+    var hash = window.location.hash;
+    if(!hash || hash.length < 2) return;
+    var target;
+    try{ target = document.getElementById(hash.slice(1)); }catch(e){ target = null; }
+    if(!target) return;
+    if(window.__lenis){
+      window.__lenis.scrollTo(target, { offset:-80, immediate:!smooth });
+    } else {
+      var y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top:y, behavior: smooth ? 'smooth' : 'auto' });
+    }
+  }
+  if(window.location.hash){
+    window.addEventListener('load', function(){
+      /* let layout settle and Lenis initialise, then realign */
+      setTimeout(function(){ scrollToHash(true); }, 80);
+    });
+  }
 })();
