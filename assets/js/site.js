@@ -148,11 +148,44 @@
   }
 
   /* ---- quote -> mailto (works on any page with the form) ---- */
+  var QUOTE_IDS=['q-name','q-company','q-phone','q-detail'];
+
+  function v(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+
   window.sendQuote = function(){
-    function v(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+    var firstInvalid=null;
+    QUOTE_IDS.forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el) return;
+      var wrap=el.closest('.field');
+      var val=el.value.trim();
+      var ok=val.length>0;
+      if(id==='q-phone' && ok){ ok=val.replace(/[^0-9]/g,'').length>=7; }
+      if(wrap){ wrap.classList.toggle('invalid', !ok); }
+      if(!ok && !firstInvalid){ firstInvalid=el; }
+    });
+    var msg=document.getElementById('quoteMsg');
+    if(firstInvalid){
+      if(msg){ msg.className='quote-msg err show'; msg.textContent='Please fill in all fields before sending, so we can quote without calling you back for the missing details.'; }
+      try{ firstInvalid.focus(); }catch(e){}
+      return;
+    }
+    if(msg){ msg.className='quote-msg'; msg.textContent=''; }
     var name=v('q-name'), company=v('q-company'), phone=v('q-phone'), detail=v('q-detail');
-    var subject='Quote request' + (company ? ' - '+company : (name ? ' - '+name : ''));
-    var body='Name: '+(name||'-')+'\nCompany: '+(company||'-')+'\nPhone: '+(phone||'-')+'\n\nRequirement:\n'+(detail||'-');
+    var subject='Quote request - '+company;
+    var body='Name: '+name+'\nCompany: '+company+'\nPhone: '+phone+'\n\nRequirement:\n'+detail;
     window.location.href='mailto:InayaLogistics19@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
   };
+
+  /* clear a field's error as soon as the user fixes it */
+  QUOTE_IDS.forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('input', function(){
+      var wrap=el.closest('.field');
+      if(wrap){ wrap.classList.remove('invalid'); }
+      var msg=document.getElementById('quoteMsg');
+      if(msg && msg.classList.contains('show')){ msg.className='quote-msg'; msg.textContent=''; }
+    });
+  });
 })();

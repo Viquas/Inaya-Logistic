@@ -565,3 +565,12 @@ html.lenis,html.lenis body{height:auto}
 .role-tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.03em;color:var(--steel-2);background:var(--paper-2);border:1px solid var(--line-l);border-radius:999px;padding:5px 11px}
 .role-main p{font-size:.92rem;line-height:1.55;color:#48566f;max-width:62ch}
 @media(max-width:640px){.role{grid-template-columns:1fr}.role .btn{justify-self:start}}
+
+/* ---------- quote form validation ---------- */
+.field .req{color:var(--red);margin-left:3px}
+.field.invalid input,.field.invalid textarea{border-color:var(--red);background:#fff}
+.field .err{display:none;font-family:var(--f-body);font-size:.78rem;color:var(--red-600);margin-top:6px}
+.field.invalid .err{display:block}
+.quote-msg{display:none;font-family:var(--f-body);font-size:.84rem;line-height:1.45;border-radius:10px;padding:11px 14px;margin-top:14px}
+.quote-msg.show{display:block}
+.quote-msg.err{background:rgba(229,35,41,.08);border:1px solid rgba(229,35,41,.3);color:var(--red-600)}
