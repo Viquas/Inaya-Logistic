@@ -100,6 +100,7 @@ header.site{position:sticky;top:0;z-index:60}
 .nav-links a.active{color:var(--navy)}
 .nav-links a.active::after{width:100%}
 .nav-cta{display:flex;align-items:center;gap:14px}
+.nav .btn-red:hover{background:var(--navy);color:#fff}
 .burger{display:none;background:none;border:1px solid var(--line-l);border-radius:9px;width:42px;height:42px;cursor:pointer;align-items:center;justify-content:center}
 .burger span{display:block;width:18px;height:2px;background:var(--navy);position:relative}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--navy)}
