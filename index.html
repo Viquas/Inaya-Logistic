@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/site.css?v=5" />
+<link rel="stylesheet" href="assets/css/site.css?v=6" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -95,11 +95,20 @@
 
 <!-- ================= HERO ================= -->
 <section class="bg-navy grid-bg hero">
+  <img class="hero-logo-bg" src="assets/img/logo.png" alt="" aria-hidden="true" />
+  <svg class="hero-routes" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path id="hrp1" class="hr-line" d="M-40 470 Q300 300 620 360 T1240 250" />
+    <path id="hrp2" class="hr-line b" d="M-40 250 Q360 120 700 210 T1240 130" />
+    <path id="hrp3" class="hr-line" d="M-40 560 Q420 520 760 470 T1240 520" />
+    <circle class="hr-dot" r="4.2"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#hrp1"/></animateMotion></circle>
+    <circle class="hr-dot b" r="4.2"><animateMotion dur="7.2s" repeatCount="indefinite" rotate="auto"><mpath href="#hrp2"/></animateMotion></circle>
+    <circle class="hr-dot" r="4.2"><animateMotion dur="5.4s" repeatCount="indefinite" rotate="auto"><mpath href="#hrp3"/></animateMotion></circle>
+  </svg>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy reveal">
+        <span class="hero-loc"><span class="hl-dot"></span>Bengaluru · Operating since 2018</span>
         <div><span class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>Safe. Reliable. On time. Every time.</span></div>
-        <span class="eyebrow">Bengaluru · Operating since 2018</span>
         <h1 class="h-xl">Freight that arrives<span class="l2">on time, every time.</span></h1>
         <p class="lede">Reliable, technology-enabled transport from Bengaluru to destinations across India. An owned fleet plus a trusted aggregator network means you get the right capacity, on time.</p>
         <div class="hero-actions">
@@ -132,12 +141,21 @@
           <div class="board-row"><span class="rc">BLR<i>&rarr;</i>CCU</span><span class="veh">22 ft</span><span class="status st-amb"><span class="d"></span>In transit</span></div>
           <div class="board-row"><span class="rc">BLR<i>&rarr;</i>PNQ</span><span class="veh">14 ft</span><span class="status st-grn"><span class="d"></span>Dispatched</span></div>
         </div>
+        <div class="board-ops">
+          <div class="board-ops-h"><span>Today's operations</span><span class="bo-live"><span class="d"></span>Live</span></div>
+          <div class="board-ops-grid">
+            <div class="bo-cell"><span class="bo-k">128</span><span class="bo-v">Dispatches today</span></div>
+            <div class="bo-cell"><span class="bo-k">46</span><span class="bo-v">Vehicles active</span></div>
+            <div class="bo-cell"><span class="bo-k">97</span><span class="bo-v">Deliveries completed</span></div>
+            <div class="bo-cell"><span class="bo-k">99.2<span class="u">%</span></span><span class="bo-v">On-time rate</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="marquee" aria-hidden="true">
-    <div class="mq-track" id="mqTrack"></div>
+    <div class="mq-track" id="mqTrack" data-items="GPS Tracking,POD Available,Same Day Dispatch,24×7 Support,Cost-effective,On-time,Reliable,Pan-India"></div>
   </div>
 </section>
 
@@ -146,7 +164,7 @@
   <div class="wrap">
     <div class="clients-head reveal">
       <span class="eyebrow">Trusted on the road</span>
-      <h2 class="h-lg">Powering deliveries for the brands that move India.</h2>
+      <h2 class="h-lg">The brands that move India, move with <span class="clients-brand">Inaya Logistics</span>.</h2>
     </div>
     <div class="logo-wall reveal">
       <div class="logo-cell"><img src="assets/img/clients/delhivery.png" alt="Delhivery" width="520" height="150" loading="lazy"></div>
@@ -200,11 +218,12 @@
 <section class="bg-deep section" id="stats">
   <div class="wrap">
     <span class="eyebrow reveal">What we run, by the numbers</span>
-    <div class="stats-grid">
-      <div class="stat reveal"><div class="num"><span class="count" data-to="8" data-pad="2">00</span></div><div class="lab">Container sizes<span class="b">7 to 32 ft</span></div></div>
-      <div class="stat reveal" style="transition-delay:.08s"><div class="num"><span class="count" data-to="5" data-pad="2">00</span></div><div class="lab">Transportation services<span class="b">First to last mile</span></div></div>
-      <div class="stat reveal" style="transition-delay:.16s"><div class="num"><span class="count" data-to="7" data-pad="2">00</span></div><div class="lab">Industries served<span class="b">E-commerce to supply chain</span></div></div>
-      <div class="stat reveal" style="transition-delay:.24s"><div class="num">PAN</div><div class="lab">India coverage<span class="b">Bengaluru to all-India</span></div></div>
+    <div class="stats-grid stats-grid--5">
+      <div class="stat reveal"><div class="num"><span class="count" data-to="100">0</span><span class="sfx">+</span></div><div class="lab">Fleet partners<span class="b">Aggregator network</span></div></div>
+      <div class="stat reveal" style="transition-delay:.06s"><div class="num"><span class="count" data-to="10">0</span><span class="sfx">+</span></div><div class="lab">Owned vehicles<span class="b">Ready to dispatch</span></div></div>
+      <div class="stat reveal" style="transition-delay:.12s"><div class="num"><span class="count" data-to="10000">0</span><span class="sfx">+</span></div><div class="lab">Trips completed<span class="b">Across India</span></div></div>
+      <div class="stat reveal" style="transition-delay:.18s"><div class="num"><span class="count" data-to="99">0</span><span class="sfx">%</span></div><div class="lab">On-time deliveries<span class="b">Planned lanes &amp; dispatch</span></div></div>
+      <div class="stat reveal" style="transition-delay:.24s"><div class="num">24/7</div><div class="lab">Operations<span class="b">Command centre</span></div></div>
     </div>
   </div>
 </section>
@@ -341,6 +360,13 @@
         <div class="frow"><span class="ft">32<i> ft</i></span><div class="fbar-wrap"><div class="fbar" style="width:100%"><span class="use">Full long-haul consignments</span></div></div></div>
         <div class="ruler-base"><span>0</span><span>8 ft</span><span>16 ft</span><span>24 ft</span><span>32 ft</span></div>
       </div>
+    </div>
+
+    <div class="fleet-photos reveal">
+      <div class="fg-item"><img src="assets/img/fleet/gallery/g11.jpg" alt="Eicher truck at golden hour" width="744" height="558" loading="lazy" decoding="async"><span class="fg-cap">Long-haul</span></div>
+      <div class="fg-item"><img src="assets/img/fleet/gallery/g01.jpg" alt="Eicher container truck at the depot" width="744" height="558" loading="lazy" decoding="async"><span class="fg-cap">Container</span></div>
+      <div class="fg-item"><img src="assets/img/fleet/gallery/g02.jpg" alt="Tata Intra box truck at a loading dock" width="744" height="558" loading="lazy" decoding="async"><span class="fg-cap">Box truck</span></div>
+      <div class="fg-item"><img src="assets/img/fleet/gallery/g06.jpg" alt="Eicher Pro front view" width="744" height="558" loading="lazy" decoding="async"><span class="fg-cap">Regional</span></div>
     </div>
   </div>
 </section>
@@ -582,10 +608,19 @@
   </div>
 </footer>
 
+<!-- ================= STICKY QUOTE BAR ================= -->
+<div class="quotebar" id="quotebar" role="complementary" aria-label="Quick quote">
+  <span class="qb-txt">Need transportation across India?<span class="qb-sub">Owned fleet + PAN-India aggregator network</span></span>
+  <a class="btn btn-red" href="contact.html#quote">Get a quote
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+  <button class="qb-close" type="button" aria-label="Dismiss">&times;</button>
+</div>
+
 <script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/lenis.min.js" defer></script>
 <script src="assets/js/motion.js?v=5" defer></script>
-<script src="assets/js/site.js?v=7" defer></script>
+<script src="assets/js/site.js?v=8" defer></script>
 </body>
 </html>

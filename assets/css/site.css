@@ -92,8 +92,8 @@ header.site{position:sticky;top:0;z-index:60}
 .foot-logo-wrap{display:inline-block;background:#fff;border-radius:12px;padding:12px 18px}
 .foot-logo-wrap .inaya-logo{height:46px}
 .lg-word{font-family:var(--f-disp);font-weight:400;letter-spacing:.02em}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.05em;text-decoration:none;color:#41506b;transition:color .2s;position:relative}
+.nav-links{display:flex;align-items:center;gap:21px}
+.nav-links a{font-family:var(--f-mono);font-size:.79rem;font-weight:600;letter-spacing:.02em;text-decoration:none;color:#33425e;transition:color .2s;position:relative}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--red);transition:width .25s ease}
 .nav-links a:hover{color:var(--red)}
 .nav-links a:hover::after{width:100%}
@@ -111,7 +111,8 @@ header.site{position:sticky;top:0;z-index:60}
 .mobile-menu .btn{margin-top:12px;justify-content:center}
 
 /* ---------- hero ---------- */
-.hero{padding-top:clamp(54px,7vw,92px);padding-bottom:0}
+.hero{padding-top:clamp(54px,7vw,92px);padding-bottom:0;position:relative;overflow:hidden}
+.hero>.wrap{position:relative;z-index:2}
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(34px,5vw,70px);align-items:center}
 .hero-copy{max-width:600px}
 .hero h1{margin:22px 0 0}
@@ -122,8 +123,8 @@ header.site{position:sticky;top:0;z-index:60}
 .hero-meta .m{font-family:var(--f-mono)}
 .hero-meta .m .k{display:block;font-size:1.5rem;color:#fff;font-weight:500}
 .hero-meta .m .v{font-size:.66rem;letter-spacing:.12em;color:var(--steel);text-transform:none;margin-top:3px}
-.promise{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.64rem;font-weight:500;letter-spacing:.13em;text-transform:none;color:#fff;background:rgba(255,255,255,.04);border:1px solid var(--line-d);border-radius:999px;padding:9px 16px;margin-bottom:20px}
-.promise svg{width:15px;height:15px;color:var(--red);flex:0 0 15px}
+.promise{display:inline-flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:.82rem;font-weight:600;letter-spacing:.09em;text-transform:none;color:#fff;background:rgba(255,255,255,.05);border:1px solid var(--line-d);border-radius:999px;padding:11px 20px;margin-bottom:18px}
+.promise svg{width:18px;height:18px;color:var(--red);flex:0 0 18px}
 
 /* dispatch board */
 .board{background:linear-gradient(180deg,var(--console-2),var(--console));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px;font-family:var(--f-mono);box-shadow:0 40px 80px -38px rgba(0,0,0,.7);position:relative}
@@ -164,8 +165,8 @@ header.site{position:sticky;top:0;z-index:60}
 .bg-navy .logo-cell,.bg-deep .logo-cell{border-color:var(--line-l)}
 .logo-cell:hover{background:var(--paper)}
 .bg-navy .logo-cell:hover,.bg-deep .logo-cell:hover{background:var(--paper)}
-.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;transition:transform .25s ease}
-.logo-cell:hover img{transform:scale(1.05)}
+.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;filter:grayscale(1);opacity:.62;transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease,opacity .35s ease}
+.logo-cell:hover img{transform:scale(1.16);filter:grayscale(0);opacity:1}
 .logo-cell--tile img{max-height:58px;max-width:92%;border-radius:11px}
 .logo-cell svg{max-height:34px;width:auto;opacity:.9}
 .logo-cell .wordmark{font-family:var(--f-disp);font-weight:700;font-size:1.25rem;letter-spacing:-.01em;color:var(--navy)}
@@ -633,4 +634,75 @@ html.lenis,html.lenis body{height:auto}
 @media(max-width:960px){
   .kn-grid,.core-grid{grid-template-columns:1fr}
   .core-diagram{max-width:380px;margin-bottom:8px}
+}
+
+/* =====================================================================
+   Client revision pass — hero watermark + route anim, bigger eyebrow,
+   live-ops board footer, refreshed stats, home fleet photos, gallery,
+   sticky quote bar.
+   ===================================================================== */
+
+/* ---- hero: logo watermark + animated freight lines ---- */
+.hero-logo-bg{position:absolute;top:50%;right:-4%;transform:translateY(-50%);width:min(62%,760px);opacity:.05;pointer-events:none;z-index:0;filter:grayscale(1) brightness(2.4)}
+.hero-routes{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.55}
+.hero-routes .hr-line{fill:none;stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 8;opacity:.4;animation:hrdash 3.4s linear infinite}
+.hero-routes .hr-line.b{stroke:#46d18f}
+.hero-routes .hr-dot{fill:var(--red)}
+.hero-routes .hr-dot.b{fill:#46d18f}
+@keyframes hrdash{to{stroke-dashoffset:-26}}
+
+/* ---- hero eyebrow: larger + repositioned above the promise pill ---- */
+.hero .hero-loc{font-family:var(--f-mono);font-size:.86rem;font-weight:600;letter-spacing:.06em;color:#e6ecf7;display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.hero .hero-loc::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block}
+.hero .hero-loc .hl-dot{width:8px;height:8px;border-radius:50%;background:#46d18f;box-shadow:0 0 0 4px rgba(70,209,143,.16);animation:live 1.8s infinite}
+
+/* ---- live board: today's-operations footer ---- */
+.board-row.enter{animation:rowin .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes rowin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.board-ops{margin-top:15px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
+.board-ops-h{display:flex;justify-content:space-between;align-items:center;font-size:.6rem;letter-spacing:.13em;color:#61748f;margin-bottom:12px}
+.board-ops-h .bo-live{display:inline-flex;align-items:center;gap:7px;color:#7fdfb0}
+.board-ops-h .bo-live .d{width:6px;height:6px;border-radius:50%;background:#46d18f;animation:live 1.8s infinite}
+.board-ops-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 14px}
+.bo-cell .bo-k{display:block;font-size:1.35rem;color:#fff;font-weight:500;letter-spacing:.01em}
+.bo-cell .bo-k .u{color:var(--red)}
+.bo-cell .bo-v{display:block;font-size:.58rem;letter-spacing:.11em;color:#8a9bbb;margin-top:3px}
+
+/* ---- stat suffix (10,000+ / 99% / 24/7) ---- */
+.stat .num .sfx{color:var(--red)}
+.stats-grid--5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:960px){.stats-grid--5{grid-template-columns:repeat(3,1fr);row-gap:34px}}
+@media(max-width:560px){.stats-grid--5{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- home fleet photo strip (reuses .fg-item look) ---- */
+.fleet-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(30px,4vw,46px)}
+@media(max-width:640px){.fleet-photos{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- clients heading brand emphasis ---- */
+.clients-brand{color:var(--red);font-weight:600}
+.bg-deep .clients-brand{color:#ff6a6f}
+
+/* ---- about gallery ---- */
+.about-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.about-gallery .fg-tall{grid-row:span 2;aspect-ratio:3/4}
+@media(max-width:760px){.about-gallery{grid-template-columns:repeat(2,1fr)}.about-gallery .fg-tall{grid-row:auto;aspect-ratio:4/3}}
+
+/* ---- sticky "need transportation" quote bar ---- */
+.quotebar{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:80;display:flex;align-items:center;gap:18px;max-width:calc(100% - 28px);padding:13px 15px 13px 22px;background:var(--navy-900);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;box-shadow:0 26px 60px -24px rgba(0,0,0,.6);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.quotebar.show{transform:translate(-50%,0);opacity:1}
+.quotebar .qb-txt{font-family:var(--f-disp);font-weight:500;font-size:1rem;letter-spacing:-.005em;line-height:1.2}
+.quotebar .qb-txt b{color:var(--red)}
+.quotebar .qb-sub{display:block;font-family:var(--f-mono);font-size:.6rem;font-weight:400;letter-spacing:.12em;color:var(--steel);margin-top:3px}
+.quotebar .btn{white-space:nowrap;padding:11px 18px}
+.quotebar .qb-close{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:#9fb0cc;cursor:pointer;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.quotebar .qb-close:hover{background:rgba(255,255,255,.16);color:#fff}
+@media(max-width:560px){
+  .quotebar{left:14px;right:14px;transform:translate(0,160%);bottom:14px;border-radius:16px;gap:12px;padding:12px 12px 12px 16px}
+  .quotebar.show{transform:translate(0,0)}
+  .quotebar .qb-txt{font-size:.9rem}
+  .quotebar .qb-sub{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-routes .hr-line{animation:none!important}
+  .quotebar{transition:opacity .3s ease}
 }

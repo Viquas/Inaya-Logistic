@@ -71,17 +71,22 @@
   }
 
   /* ---- counters ---- */
+  function fmtCount(n, padTo){
+    if(padTo){ return String(n).padStart(padTo,'0'); }
+    if(n >= 1000){ return n.toLocaleString('en-IN'); } /* 10000 -> 10,000 */
+    return String(n);
+  }
   function runCount(el){
     var to = parseInt(el.getAttribute('data-to'),10);
     var padTo = parseInt(el.getAttribute('data-pad')||'0',10);
-    if(reduce){ el.textContent = padTo ? String(to).padStart(padTo,'0') : to; return; }
+    if(reduce){ el.textContent = fmtCount(to, padTo); return; }
     var start = null, dur = 1200;
     function frame(ts){
       if(!start) start = ts;
       var p = Math.min((ts-start)/dur, 1);
       var eased = 1 - Math.pow(1-p, 3);
       var val = Math.round(eased*to);
-      el.textContent = padTo ? String(val).padStart(padTo,'0') : val;
+      el.textContent = fmtCount(val, padTo);
       if(p<1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
@@ -94,28 +99,52 @@
     counters.forEach(function(el){ cio.observe(el); });
   }
 
-  /* ---- dispatch board live cycling (DOM nodes, no innerHTML) ---- */
-  var boardRows = document.querySelectorAll('#boardRows .status');
-  if(boardRows.length && !reduce){
-    var pool = [
+  /* ---- dispatch board: new route slides in every 5s (DOM nodes only) ---- */
+  var boardRows = document.getElementById('boardRows');
+  if(boardRows && !reduce){
+    var DESTS = ['DEL','BOM','HYD','MAA','CCU','PNQ','AMD','JAI','GHY','COK','VTZ','NAG','IDR','LKO','SXR','GOI'];
+    var VEHS  = ['32 ft','24 ft','22 ft','20 ft','17 ft','14 ft','10 ft','7 ft'];
+    var STATS = [
       {t:'On time', c:'st-grn'},
       {t:'In transit', c:'st-amb'},
       {t:'Loading', c:'st-blu'},
       {t:'Dispatched', c:'st-grn'},
-      {t:'On schedule', c:'st-grn'},
       {t:'Arriving', c:'st-amb'}
     ];
+    var pick = function(a){ return a[Math.floor(Math.random()*a.length)]; };
+    function makeRow(){
+      var s = pick(STATS);
+      var row = document.createElement('div');
+      row.className = 'board-row enter';
+
+      var rc = document.createElement('span');
+      rc.className = 'rc';
+      rc.appendChild(document.createTextNode('BLR'));
+      var arrow = document.createElement('i');
+      arrow.textContent = '→';
+      rc.appendChild(arrow);
+      rc.appendChild(document.createTextNode(pick(DESTS)));
+
+      var veh = document.createElement('span');
+      veh.className = 'veh';
+      veh.textContent = pick(VEHS);
+
+      var st = document.createElement('span');
+      st.className = 'status ' + s.c;
+      var d = document.createElement('span');
+      d.className = 'd';
+      st.appendChild(d);
+      st.appendChild(document.createTextNode(s.t));
+
+      row.appendChild(rc); row.appendChild(veh); row.appendChild(st);
+      return row;
+    }
     setInterval(function(){
-      var row = boardRows[Math.floor(Math.random()*boardRows.length)];
-      var pick = pool[Math.floor(Math.random()*pool.length)];
-      row.className = 'status ' + pick.c + ' flip';
-      var dot = document.createElement('span');
-      dot.className = 'd';
-      row.textContent = '';
-      row.appendChild(dot);
-      row.appendChild(document.createTextNode(pick.t));
-      setTimeout(function(){ row.classList.remove('flip'); }, 420);
-    }, 2200);
+      var row = makeRow();
+      boardRows.insertBefore(row, boardRows.firstChild);
+      while(boardRows.children.length > 6){ boardRows.removeChild(boardRows.lastChild); }
+      setTimeout(function(){ row.classList.remove('enter'); }, 520);
+    }, 5000);
   }
 
   /* ---- maps: hover tooltips (DOM nodes, no innerHTML) ---- */
@@ -214,5 +243,28 @@
       /* let layout settle and Lenis initialise, then realign */
       setTimeout(function(){ scrollToHash(true); }, 80);
     });
+  }
+
+  /* ---- sticky "need transportation" quote bar: appears after the fold,
+     dismissible for the session ---- */
+  var qbar = document.getElementById('quotebar');
+  if(qbar){
+    var qbarDone = false;
+    try{ qbarDone = sessionStorage.getItem('qbarDismissed') === '1'; }catch(e){}
+    var qbClose = qbar.querySelector('.qb-close');
+    if(qbClose){
+      qbClose.addEventListener('click', function(){
+        qbar.classList.remove('show');
+        qbarDone = true;
+        try{ sessionStorage.setItem('qbarDismissed','1'); }catch(e){}
+      });
+    }
+    var qbTick = function(){
+      if(qbarDone){ return; }
+      if(window.scrollY > 620){ qbar.classList.add('show'); }
+      else { qbar.classList.remove('show'); }
+    };
+    window.addEventListener('scroll', qbTick, {passive:true});
+    qbTick();
   }
 })();
