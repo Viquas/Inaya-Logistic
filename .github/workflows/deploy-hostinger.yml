@@ -42,7 +42,3 @@ jobs:
             .github/**
             .gitignore
             **/*.md
-            compare.html
-            option-3.html
-            option-4.html
-            new-homepage-design-direction.html

@@ -1,0 +1,12 @@
+{
+  "name": "Inaya Logistics",
+  "short_name": "Inaya",
+  "description": "Technology-driven freight transport from Bengaluru across India.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F4F4F1",
+  "theme_color": "#16265E",
+  "icons": [
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

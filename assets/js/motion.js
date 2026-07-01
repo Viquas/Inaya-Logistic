@@ -23,8 +23,11 @@
   gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
 
-  /* Smooth-scroll same-page anchor links (skip link, in-page jumps) */
+  /* Smooth-scroll same-page anchor links (in-page jumps).
+     The skip link is excluded so it keeps native behaviour and
+     actually moves keyboard focus into <main tabindex="-1">. */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    if (a.classList.contains("skip-link")) return;
     a.addEventListener("click", function (e) {
       var id = a.getAttribute("href");
       if (id.length < 2) return;
@@ -32,6 +35,7 @@
       if (!target) return;
       e.preventDefault();
       lenis.scrollTo(target, { offset: -80 });
+      try { target.focus({ preventScroll: true }); } catch (err) {}
     });
   });
 

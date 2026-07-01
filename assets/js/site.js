@@ -33,6 +33,15 @@
     burger.addEventListener('click', function(){
       var open = menu.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && menu.classList.contains('open')){
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+        burger.setAttribute('aria-label','Open menu');
+        burger.focus();
+      }
     });
     menu.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
@@ -56,26 +65,38 @@
         track.appendChild(span);
       });
     }
-    appendSet();
-    /* make the first half at least as wide as the viewport so the loop
-       point never shows a gap */
-    var vw = document.documentElement.clientWidth || window.innerWidth || 1280;
-    var guard = 0;
-    while(track.scrollWidth < vw + 160 && guard < 40){ appendSet(); guard++; }
-    /* clone the whole first half -> track is exactly two identical halves,
-       so the CSS translateX(-50%) wraps seamlessly (never-ending) */
-    Array.prototype.slice.call(track.children).forEach(function(node){
-      track.appendChild(node.cloneNode(true));
+    function buildTrack(){
+      track.textContent = '';
+      appendSet();
+      /* make the first half at least as wide as the viewport so the loop
+         point never shows a gap */
+      var vw = document.documentElement.clientWidth || window.innerWidth || 1280;
+      var guard = 0;
+      while(track.scrollWidth < vw + 160 && guard < 40){ appendSet(); guard++; }
+      /* clone the whole first half -> track is exactly two identical halves,
+         so the CSS translateX(-50%) wraps seamlessly (never-ending) */
+      Array.prototype.slice.call(track.children).forEach(function(node){
+        track.appendChild(node.cloneNode(true));
+      });
+    }
+    buildTrack();
+    var mqResizeT;
+    window.addEventListener('resize', function(){
+      clearTimeout(mqResizeT);
+      mqResizeT = setTimeout(buildTrack, 250);
     });
   }
 
   /* ---- clock ---- */
   var clock = document.getElementById('clock');
   if(clock){
-    var pad = function(n){ return n<10 ? '0'+n : ''+n; };
     var tick = function(){
-      var d = new Date();
-      clock.textContent = pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+      try{
+        clock.textContent = new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata',hour12:false}) + ' IST';
+      }catch(e){
+        var d = new Date(), p = function(n){ return n<10 ? '0'+n : ''+n; };
+        clock.textContent = p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+      }
     };
     tick(); setInterval(tick, 1000);
   }
@@ -150,6 +171,7 @@
       return row;
     }
     setInterval(function(){
+      if(document.hidden) return;
       var row = makeRow();
       boardRows.insertBefore(row, boardRows.firstChild);
       while(boardRows.children.length > 6){ boardRows.removeChild(boardRows.lastChild); }
@@ -218,6 +240,9 @@
     var body='Name: '+name+'\nCompany: '+company+'\nPhone: '+phone+'\n\nRequirement:\n'+detail;
     window.location.href='mailto:InayaLogistics19@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
   };
+
+  var quoteSend = document.getElementById('quoteSend');
+  if(quoteSend){ quoteSend.addEventListener('click', window.sendQuote); }
 
   /* clear a field's error as soon as the user fixes it */
   QUOTE_IDS.forEach(function(id){
