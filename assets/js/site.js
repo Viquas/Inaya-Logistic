@@ -56,7 +56,17 @@
         track.appendChild(span);
       });
     }
-    appendSet(); appendSet();
+    appendSet();
+    /* make the first half at least as wide as the viewport so the loop
+       point never shows a gap */
+    var vw = document.documentElement.clientWidth || window.innerWidth || 1280;
+    var guard = 0;
+    while(track.scrollWidth < vw + 160 && guard < 40){ appendSet(); guard++; }
+    /* clone the whole first half -> track is exactly two identical halves,
+       so the CSS translateX(-50%) wraps seamlessly (never-ending) */
+    Array.prototype.slice.call(track.children).forEach(function(node){
+      track.appendChild(node.cloneNode(true));
+    });
   }
 
   /* ---- clock ---- */

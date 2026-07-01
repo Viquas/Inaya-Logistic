@@ -44,7 +44,7 @@ a{color:inherit}
 .bg-deep{background:var(--navy-900);color:#fff}
 .grid-bg{background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px}
 
-.eyebrow{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.05em;text-transform:none;color:#aebcd8;display:inline-flex;align-items:center;gap:9px}
+.eyebrow{font-family:var(--f-mono);font-size:.9rem;letter-spacing:.04em;text-transform:none;color:#aebcd8;display:inline-flex;align-items:center;gap:9px}
 .bg-paper .eyebrow,.bg-paper-2 .eyebrow{color:#455579}
 .eyebrow::before{content:"";width:24px;height:1px;background:var(--red);display:inline-block}
 
@@ -117,7 +117,8 @@ header.site{position:sticky;top:0;z-index:60}
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(34px,5vw,70px);align-items:center}
 .hero-copy{max-width:600px}
 .hero h1{margin:22px 0 0}
-.hero h1 .l2{display:block;color:var(--red)}
+.hero h1 .l2{display:block;color:var(--red);background:linear-gradient(105deg,var(--red) 0%,var(--red) 42%,#ff9ea2 50%,var(--red) 58%,var(--red) 100%);background-size:230% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:heroshine 5s ease-in-out infinite}
+@keyframes heroshine{0%{background-position:135% 0}55%{background-position:-135% 0}100%{background-position:-135% 0}}
 .hero .lede{margin-top:24px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:38px;padding-top:26px;border-top:1px solid var(--line-d)}
@@ -162,12 +163,12 @@ header.site{position:sticky;top:0;z-index:60}
 .clients-head h2{margin-top:16px}
 .logo-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line-l);border-radius:16px;overflow:hidden;background:#fff}
 .bg-navy .logo-wall,.bg-deep .logo-wall{border-color:var(--line-l);background:#fff}
-.logo-cell{display:flex;align-items:center;justify-content:center;padding:26px 22px;min-height:124px;border-right:1px solid var(--line-l);border-bottom:1px solid var(--line-l);transition:background .25s ease}
+.logo-cell{position:relative;display:flex;align-items:center;justify-content:center;padding:26px 22px;min-height:124px;border-right:1px solid var(--line-l);border-bottom:1px solid var(--line-l);transition:background .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
 .bg-navy .logo-cell,.bg-deep .logo-cell{border-color:var(--line-l)}
-.logo-cell:hover{background:var(--paper)}
+.logo-cell:hover{background:var(--paper);transform:scale(1.06);z-index:2}
 .bg-navy .logo-cell:hover,.bg-deep .logo-cell:hover{background:var(--paper)}
-.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;filter:grayscale(0);opacity:1;transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease,opacity .35s ease}
-.logo-cell:hover img{transform:scale(1.16);filter:grayscale(1);opacity:.62}
+.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;filter:none;opacity:1;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.logo-cell:hover img{transform:scale(1.12)}
 .logo-cell--tile img{max-height:58px;max-width:92%;border-radius:11px}
 .logo-cell svg{max-height:34px;width:auto;opacity:.9}
 .logo-cell .wordmark{font-family:var(--f-disp);font-weight:700;font-size:1.25rem;letter-spacing:-.01em;color:var(--navy)}
@@ -644,7 +645,7 @@ html.lenis,html.lenis body{height:auto}
    ===================================================================== */
 
 /* ---- hero: logo watermark + animated freight lines ---- */
-.hero-logo-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(70%,820px);opacity:.07;pointer-events:none;z-index:0}
+.hero-logo-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(82%,960px);opacity:.12;pointer-events:none;z-index:0}
 .hero-routes{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.55}
 .hero-routes .hr-line{fill:none;stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 8;opacity:.4;animation:hrdash 3.4s linear infinite}
 .hero-routes .hr-line.b{stroke:#46d18f}
@@ -689,12 +690,12 @@ html.lenis,html.lenis body{height:auto}
 @media(max-width:760px){.about-gallery{grid-template-columns:repeat(2,1fr)}.about-gallery .fg-tall{grid-row:auto;aspect-ratio:4/3}}
 
 /* ---- sticky "need transportation" quote bar ---- */
-.quotebar{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:80;display:flex;align-items:center;gap:18px;max-width:calc(100% - 28px);padding:13px 15px 13px 24px;background:var(--navy-900);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;box-shadow:0 26px 60px -24px rgba(0,0,0,.6);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
-.quotebar.show{transform:translate(-50%,0);opacity:1}
-.quotebar .qb-txt{font-family:var(--f-disp);font-weight:500;font-size:1rem;letter-spacing:-.005em;line-height:1.2}
+.quotebar{position:fixed;right:20px;left:auto;bottom:20px;transform:translateY(170%);z-index:80;display:flex;align-items:center;gap:11px;max-width:min(340px,calc(100% - 28px));padding:9px 10px 9px 17px;background:var(--navy-900);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;box-shadow:0 20px 46px -22px rgba(0,0,0,.6);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.quotebar.show{transform:translateY(0);opacity:1}
+.quotebar .qb-txt{font-family:var(--f-disp);font-weight:500;font-size:.86rem;letter-spacing:-.005em;line-height:1.15}
 .quotebar .qb-txt b{color:var(--red)}
-.quotebar .qb-sub{display:block;font-family:var(--f-mono);font-size:.6rem;font-weight:400;letter-spacing:.12em;color:var(--steel);margin-top:3px}
-.quotebar .btn{white-space:nowrap;padding:11px 18px}
+.quotebar .qb-sub{display:block;font-family:var(--f-mono);font-size:.54rem;font-weight:400;letter-spacing:.1em;color:var(--steel);margin-top:2px}
+.quotebar .btn{white-space:nowrap;padding:9px 14px}
 @media(max-width:560px){
   .quotebar{left:14px;right:14px;transform:translate(0,160%);bottom:14px;border-radius:16px;gap:12px;padding:12px 12px 12px 16px}
   .quotebar.show{transform:translate(0,0)}
@@ -703,5 +704,6 @@ html.lenis,html.lenis body{height:auto}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-routes .hr-line{animation:none!important}
+  .hero h1 .l2{-webkit-text-fill-color:var(--red);background:none}
   .quotebar{transition:opacity .3s ease}
 }
