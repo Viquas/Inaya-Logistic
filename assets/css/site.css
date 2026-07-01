@@ -44,12 +44,12 @@ a{color:inherit}
 .bg-deep{background:var(--navy-900);color:#fff}
 .grid-bg{background-image:radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px}
 
-.eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;text-transform:none;color:var(--steel);display:inline-flex;align-items:center;gap:9px}
-.bg-paper .eyebrow,.bg-paper-2 .eyebrow{color:var(--steel-2)}
+.eyebrow{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.05em;text-transform:none;color:#aebcd8;display:inline-flex;align-items:center;gap:9px}
+.bg-paper .eyebrow,.bg-paper-2 .eyebrow{color:#455579}
 .eyebrow::before{content:"";width:24px;height:1px;background:var(--red);display:inline-block}
 
-.h-xl{font-family:var(--f-disp);font-weight:400;font-size:clamp(2.5rem,6.8vw,5.3rem);line-height:.95;letter-spacing:-.01em;text-transform:none}
-.h-lg{font-family:var(--f-disp);font-weight:400;font-size:clamp(1.9rem,4.3vw,3.2rem);line-height:1.04;letter-spacing:-.005em;text-transform:none}
+.h-xl{font-family:var(--f-disp);font-weight:400;font-size:clamp(2.3rem,6vw,4.6rem);line-height:.97;letter-spacing:-.01em;text-transform:none}
+.h-lg{font-family:var(--f-disp);font-weight:400;font-size:clamp(1.75rem,3.9vw,2.8rem);line-height:1.06;letter-spacing:-.005em;text-transform:none}
 .h-md{font-family:var(--f-disp);font-weight:500;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.15;letter-spacing:-.01em}
 .lede{font-size:clamp(1.04rem,1.5vw,1.22rem);line-height:1.6;max-width:52ch;color:rgba(255,255,255,.74)}
 .bg-paper .lede,.bg-paper-2 .lede{color:#3c4a63}
