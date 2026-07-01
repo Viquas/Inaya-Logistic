@@ -118,10 +118,12 @@
     }, 2200);
   }
 
-  /* ---- india map: hover tooltips (DOM nodes, no innerHTML) ---- */
-  var wrap = document.getElementById('mapWrap');
-  var tip = document.getElementById('mapTip');
-  if(wrap && tip){
+  /* ---- maps: hover tooltips (DOM nodes, no innerHTML) ---- */
+  /* generalised so any .map-wrap that contains a .map-tip works
+     (India lane map + Karnataka home-state map) */
+  document.querySelectorAll('.map-wrap').forEach(function(wrap){
+    var tip = wrap.querySelector('.map-tip');
+    if(!tip) return;
     wrap.querySelectorAll('.city').forEach(function(c){
       c.addEventListener('mouseenter', function(){
         var key = document.createElement('span');
@@ -139,12 +141,13 @@
       });
       c.addEventListener('mouseleave', function(){ tip.classList.remove('show'); });
     });
-  }
+  });
 
-  /* ---- reduced motion: freeze SVG (SMIL) animations on the map ---- */
+  /* ---- reduced motion: freeze SVG (SMIL) animations on the maps ---- */
   if(reduce){
-    var im = document.getElementById('indiaMap');
-    if(im && im.pauseAnimations){ try{ im.pauseAnimations(); }catch(e){} }
+    document.querySelectorAll('#indiaMap,#karnatakaMap').forEach(function(im){
+      if(im && im.pauseAnimations){ try{ im.pauseAnimations(); }catch(e){} }
+    });
   }
 
   /* ---- quote -> mailto (works on any page with the form) ---- */

@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/css/site.css?v=3" />
+<link rel="stylesheet" href="assets/css/site.css?v=4" />
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -152,8 +152,153 @@
   </div>
 </section>
 
+<!-- KARNATAKA HOME STATE -->
+<section class="bg-navy grid-bg section">
+  <div class="wrap">
+    <div class="kn-grid">
+      <div class="kn-map-card reveal">
+        <div class="map-wrap kn-map" id="knMapWrap">
+          <svg id="karnatakaMap" viewBox="0 0 600 940" role="img" aria-label="Map of Karnataka showing Inaya Logistics supply coverage across every district, with the Bengaluru core hub highlighted">
+            <image href="assets/img/karnataka.svg?v=1" x="0" y="0" width="600" height="940"/>
+            <!-- district / city pins -->
+            <g class="node city" data-name="Bidar" data-km="North Karnataka · ≈ 700 km"><circle class="ring" cx="455" cy="80" r="10"/><circle class="pin" cx="455" cy="80" r="3.6"/></g>
+            <g class="node city" data-name="Kalaburagi" data-km="≈ 620 km · daily service"><circle class="ring" cx="365" cy="158" r="12"/><circle class="pin" cx="365" cy="158" r="4.4"/><text class="clab" x="374" y="162" text-anchor="start">Kalaburagi</text></g>
+            <g class="node city" data-name="Vijayapura" data-km="≈ 530 km"><circle class="ring" cx="218" cy="226" r="12"/><circle class="pin" cx="218" cy="226" r="4.4"/><text class="clab" x="209" y="230" text-anchor="end">Vijayapura</text></g>
+            <g class="node city" data-name="Raichur" data-km="≈ 410 km"><circle class="ring" cx="432" cy="310" r="10"/><circle class="pin" cx="432" cy="310" r="3.6"/></g>
+            <g class="node city" data-name="Belagavi" data-km="≈ 500 km · daily service"><circle class="ring" cx="60" cy="358" r="12"/><circle class="pin" cx="60" cy="358" r="4.4"/><text class="clab" x="69" y="362" text-anchor="start">Belagavi</text></g>
+            <g class="node city" data-name="Hubballi–Dharwad" data-km="≈ 410 km · daily service"><circle class="ring" cx="142" cy="424" r="12"/><circle class="pin" cx="142" cy="424" r="4.4"/><text class="clab" x="151" y="428" text-anchor="start">Hubballi–Dharwad</text></g>
+            <g class="node city" data-name="Ballari" data-km="≈ 305 km"><circle class="ring" cx="377" cy="454" r="12"/><circle class="pin" cx="377" cy="454" r="4.4"/><text class="clab" x="386" y="458" text-anchor="start">Ballari</text></g>
+            <g class="node city" data-name="Davanagere" data-km="≈ 265 km"><circle class="ring" cx="246" cy="546" r="10"/><circle class="pin" cx="246" cy="546" r="3.6"/></g>
+            <g class="node city" data-name="Chitradurga" data-km="≈ 200 km"><circle class="ring" cx="308" cy="578" r="10"/><circle class="pin" cx="308" cy="578" r="3.6"/></g>
+            <g class="node city" data-name="Shivamogga" data-km="≈ 275 km"><circle class="ring" cx="200" cy="618" r="12"/><circle class="pin" cx="200" cy="618" r="4.4"/><text class="clab" x="191" y="622" text-anchor="end">Shivamogga</text></g>
+            <g class="node city" data-name="Udupi" data-km="≈ 405 km · coastal"><circle class="ring" cx="92" cy="698" r="10"/><circle class="pin" cx="92" cy="698" r="3.6"/></g>
+            <g class="node city" data-name="Tumakuru" data-km="≈ 70 km"><circle class="ring" cx="402" cy="698" r="10"/><circle class="pin" cx="402" cy="698" r="3.6"/></g>
+            <g class="node city" data-name="Kolar" data-km="≈ 70 km"><circle class="ring" cx="534" cy="725" r="10"/><circle class="pin" cx="534" cy="725" r="3.6"/></g>
+            <g class="node city" data-name="Hassan" data-km="≈ 185 km"><circle class="ring" cx="269" cy="743" r="10"/><circle class="pin" cx="269" cy="743" r="3.6"/></g>
+            <g class="node city" data-name="Mangaluru" data-km="≈ 350 km · coastal / port"><circle class="ring" cx="107" cy="756" r="12"/><circle class="pin" cx="107" cy="756" r="4.4"/><text class="clab" x="116" y="760" text-anchor="start">Mangaluru</text></g>
+            <g class="node city" data-name="Mandya" data-km="≈ 100 km"><circle class="ring" cx="373" cy="809" r="10"/><circle class="pin" cx="373" cy="809" r="3.6"/></g>
+            <g class="node city" data-name="Mysuru" data-km="≈ 145 km · daily service"><circle class="ring" cx="340" cy="839" r="12"/><circle class="pin" cx="340" cy="839" r="4.4"/><text class="clab" x="349" y="843" text-anchor="start">Mysuru</text></g>
+            <!-- Bengaluru core hub -->
+            <g class="node">
+              <circle class="hub-pulse" cx="464" cy="748" r="20"><animate attributeName="r" values="10;30;10" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0;.6" dur="2.8s" repeatCount="indefinite"/></circle>
+              <circle cx="464" cy="748" r="7.5" fill="#E52329"/>
+              <text class="hub-label" x="451" y="752" text-anchor="end">Bengaluru · core hub</text>
+            </g>
+          </svg>
+          <div class="map-tip" id="knMapTip"></div>
+        </div>
+        <div class="map-legend">
+          <span><i class="lg-dot lg-hub"></i>Bengaluru core hub</span>
+          <span><i class="lg-dot lg-city"></i>District we serve</span>
+        </div>
+      </div>
+
+      <div class="kn-copy reveal">
+        <span class="eyebrow">Karnataka · Home state</span>
+        <h2 class="h-lg" style="color:#fff">Everywhere in Karnataka. Every district covered.</h2>
+        <p class="kn-lead">Karnataka is home ground. From our Bengaluru base we supply into every district in the state — coastal Mangaluru and Udupi, the Kittur belt around Belagavi and Hubballi–Dharwad, the northern districts of Kalaburagi, Vijayapura and Bidar, and the whole southern cluster around Mysuru, Mandya and Hassan.</p>
+        <div class="kn-dists">
+          <span class="kn-dist is-hub">Bengaluru Urban</span>
+          <span class="kn-dist">Bengaluru Rural</span>
+          <span class="kn-dist">Ramanagara</span>
+          <span class="kn-dist">Mysuru</span>
+          <span class="kn-dist">Mandya</span>
+          <span class="kn-dist">Hassan</span>
+          <span class="kn-dist">Chamarajanagara</span>
+          <span class="kn-dist">Kodagu</span>
+          <span class="kn-dist">Tumakuru</span>
+          <span class="kn-dist">Kolar</span>
+          <span class="kn-dist">Chikkaballapura</span>
+          <span class="kn-dist">Chitradurga</span>
+          <span class="kn-dist">Davanagere</span>
+          <span class="kn-dist">Shivamogga</span>
+          <span class="kn-dist">Chikkamagaluru</span>
+          <span class="kn-dist">Dakshina Kannada</span>
+          <span class="kn-dist">Udupi</span>
+          <span class="kn-dist">Uttara Kannada</span>
+          <span class="kn-dist">Ballari</span>
+          <span class="kn-dist">Vijayanagara</span>
+          <span class="kn-dist">Koppal</span>
+          <span class="kn-dist">Gadag</span>
+          <span class="kn-dist">Haveri</span>
+          <span class="kn-dist">Dharwad</span>
+          <span class="kn-dist">Belagavi</span>
+          <span class="kn-dist">Bagalkote</span>
+          <span class="kn-dist">Vijayapura</span>
+          <span class="kn-dist">Raichur</span>
+          <span class="kn-dist">Yadgir</span>
+          <span class="kn-dist">Kalaburagi</span>
+          <span class="kn-dist">Bidar</span>
+        </div>
+        <div class="kn-note">
+          <svg class="kn-note-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+          <p>Bengaluru is our core. First-mile pickup, mid-mile line-haul and last-mile delivery inside the city are what we do best — <a href="#core">see the Bengaluru core ↓</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENGALURU CORE: FIRST / MID / LAST MILE -->
+<section class="bg-paper section" id="core">
+  <div class="wrap">
+    <div class="sec-head sec-head--center reveal">
+      <span class="eyebrow">The core · Bengaluru</span>
+      <h2 class="h-lg">First mile. Mid mile. Last mile.</h2>
+      <p class="lede">Inside Bengaluru, we run the full chain end to end. This is the heart of what Inaya does — moving goods from the very first pickup to the final doorstep, and every hub transfer in between.</p>
+    </div>
+    <div class="core-grid">
+      <div class="core-diagram reveal">
+        <svg viewBox="0 0 480 480" role="img" aria-label="Concentric diagram of Bengaluru operations: first-mile pickup, mid-mile line-haul and last-mile delivery around the central hub">
+          <circle class="core-band core-b1" cx="240" cy="240" r="205"/>
+          <circle class="core-band core-b2" cx="240" cy="240" r="140"/>
+          <circle class="core-band core-b3" cx="240" cy="240" r="78"/>
+          <circle class="core-ring core-r1" cx="240" cy="240" r="205"/>
+          <circle class="core-ring core-r2" cx="240" cy="240" r="140"/>
+          <circle class="core-ring core-r3" cx="240" cy="240" r="78"/>
+          <g class="core-dot-last"><circle cx="443.0" cy="211.5" r="4.2"/> <circle cx="377.2" cy="87.7" r="4.2"/> <circle cx="232.8" cy="35.1" r="4.2"/> <circle cx="83.0" cy="108.2" r="4.2"/> <circle cx="35.1" cy="247.2" r="4.2"/> <circle cx="87.7" cy="377.2" r="4.2"/> <circle cx="232.8" cy="444.9" r="4.2"/> <circle cx="377.2" cy="392.3" r="4.2"/> <circle cx="443.0" cy="268.5" r="4.2"/></g>
+          <g class="core-dot-mid"><circle cx="375.2" cy="203.8" r="3.8"/> <circle cx="287.9" cy="108.4" r="3.8"/> <circle cx="159.7" cy="125.3" r="3.8"/> <circle cx="100.0" cy="240.0" r="3.8"/> <circle cx="170.0" cy="361.2" r="3.8"/> <circle cx="310.0" cy="361.2" r="3.8"/> <circle cx="375.2" cy="276.2" r="3.8"/></g>
+          <g class="core-dot-first"><circle cx="303.9" cy="195.3" r="3.4"/> <circle cx="201.0" cy="172.5" r="3.4"/> <circle cx="169.3" cy="273.0" r="3.4"/> <circle cx="279.0" cy="307.5" r="3.4"/></g>
+          <text class="core-rlab" x="240" y="52" text-anchor="middle">Last mile</text>
+          <text class="core-rlab" x="240" y="116" text-anchor="middle">Mid mile</text>
+          <text class="core-rlab" x="240" y="180" text-anchor="middle">First mile</text>
+          <circle cx="240" cy="240" r="11" fill="#E52329"/>
+          <circle class="core-ring core-r1" cx="240" cy="240" r="20" stroke-dasharray="0"><animate attributeName="r" values="12;28;12" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".6;0;.6" dur="2.8s" repeatCount="indefinite"/></circle>
+          <text class="core-hub-lab" x="240" y="270" text-anchor="middle">Bengaluru</text>
+        </svg>
+      </div>
+      <div class="core-cards reveal">
+        <div class="core-card">
+          <span class="core-badge b-first">FM</span>
+          <div>
+            <span class="core-tag">First mile · pickup</span>
+            <h3>Pickup at source</h3>
+            <p>We collect from factories, warehouses, sellers and dark stores across Bengaluru and consolidate the load into our hub — scheduled or on-demand.</p>
+          </div>
+        </div>
+        <div class="core-card">
+          <span class="core-badge b-mid">MM</span>
+          <div>
+            <span class="core-tag">Mid mile · line-haul</span>
+            <h3>Hub to hub</h3>
+            <p>Line-haul and sortation between our Bengaluru hub and onward points — feeding city zones and connecting to our Karnataka and pan-India lanes.</p>
+          </div>
+        </div>
+        <div class="core-card">
+          <span class="core-badge b-last">LM</span>
+          <div>
+            <span class="core-tag">Last mile · delivery</span>
+            <h3>Doorstep delivery</h3>
+            <p>Final-leg distribution to stores, quick-commerce dark stores and customers — city-wide across Bengaluru, on time, every time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- KEY LANES -->
-<section class="bg-paper section">
+<section class="bg-paper-2 section">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Lanes from Bengaluru</span>
@@ -246,6 +391,6 @@
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/lenis.min.js" defer></script>
 <script src="assets/js/motion.js?v=5" defer></script>
-<script src="assets/js/site.js?v=7" defer></script>
+<script src="assets/js/site.js?v=8" defer></script>
 </body>
 </html>

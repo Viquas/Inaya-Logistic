@@ -586,3 +586,51 @@ html.lenis,html.lenis body{height:auto}
 .quote-msg{display:none;font-family:var(--f-body);font-size:.84rem;line-height:1.45;border-radius:10px;padding:11px 14px;margin-top:14px}
 .quote-msg.show{display:block}
 .quote-msg.err{background:rgba(229,35,41,.08);border:1px solid rgba(229,35,41,.3);color:var(--red-600)}
+
+/* ---------- Karnataka home-state map ---------- */
+.kn-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(32px,5vw,64px);align-items:center}
+.kn-map-card{background:radial-gradient(120% 120% at 60% 0%,rgba(36,58,126,.5),rgba(15,28,70,.2));border:1px solid var(--line-d);border-radius:20px;padding:clamp(14px,2vw,22px);position:relative;overflow:hidden}
+.kn-map-card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px;opacity:.5;pointer-events:none}
+.kn-map{max-width:390px;margin:0 auto;position:relative}
+.kn-copy h2{margin:18px 0 16px}
+.kn-lead{color:rgba(255,255,255,.74);max-width:50ch;font-size:clamp(1rem,1.4vw,1.12rem);line-height:1.6}
+.kn-note{margin-top:26px;display:flex;gap:14px;align-items:flex-start;border:1px solid rgba(229,35,41,.35);background:rgba(229,35,41,.07);border-radius:14px;padding:16px 18px}
+.kn-note .kn-note-ic{width:20px;height:20px;flex:0 0 20px;color:var(--red);margin-top:2px}
+.kn-note p{font-size:.9rem;color:rgba(255,255,255,.82);line-height:1.55}
+.kn-note a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.kn-dists{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.kn-dist{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.02em;color:rgba(255,255,255,.7);padding:6px 12px;border:1px solid var(--line-d);border-radius:999px;background:rgba(255,255,255,.02);transition:border-color .2s ease,color .2s ease,background .2s ease}
+.kn-dist:hover{border-color:rgba(229,35,41,.5);color:#fff}
+.kn-dist.is-hub{border-color:var(--red);background:rgba(229,35,41,.14);color:#fff}
+.kn-map .hub-pulse{fill:none;stroke:var(--red);stroke-width:1}
+
+/* ---------- Bengaluru core: first / mid / last mile ---------- */
+.core-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+.core-diagram{max-width:440px;width:100%;margin:0 auto}
+.core-band{stroke:none}
+.core-b1{fill:rgba(229,35,41,.05)}
+.core-b2{fill:rgba(22,38,94,.06)}
+.core-b3{fill:rgba(30,140,92,.09)}
+.core-ring{fill:none;stroke-dasharray:3 6}
+.core-r1{stroke:rgba(229,35,41,.55)}
+.core-r2{stroke:rgba(22,38,94,.45)}
+.core-r3{stroke:rgba(30,140,92,.7)}
+.core-dot-last{fill:var(--red)}
+.core-dot-mid{fill:var(--navy)}
+.core-dot-first{fill:#1e8c5c}
+.core-rlab{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;fill:#5a6a8c}
+.core-hub-lab{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;fill:var(--navy);font-weight:600}
+.core-cards{display:flex;flex-direction:column;gap:16px}
+.core-card{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--line-l);border-radius:14px;padding:20px 22px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.core-card:hover{transform:translateY(-3px);border-color:var(--navy);box-shadow:0 22px 40px -30px rgba(22,38,94,.4)}
+.core-badge{width:48px;height:48px;flex:0 0 48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-weight:600;font-size:.82rem;color:#fff}
+.core-badge.b-first{background:#1e8c5c}
+.core-badge.b-mid{background:var(--navy)}
+.core-badge.b-last{background:var(--red)}
+.core-card h3{font-family:var(--f-disp);font-weight:500;font-size:1.1rem;letter-spacing:-.005em;margin-bottom:5px}
+.core-card p{font-size:.9rem;color:#4a5871;line-height:1.55}
+.core-tag{display:inline-block;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;color:#7c8db0;margin-bottom:8px}
+@media(max-width:960px){
+  .kn-grid,.core-grid{grid-template-columns:1fr}
+  .core-diagram{max-width:380px;margin-bottom:8px}
+}
