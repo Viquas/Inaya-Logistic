@@ -207,7 +207,7 @@ header.site{position:sticky;top:0;z-index:60}
 .sec-head h2{margin:18px 0 18px}
 .sec-head--center{margin-left:auto;margin-right:auto;text-align:center}
 .sec-head--center .eyebrow{justify-content:center}
-.cluster-label{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:none;color:var(--steel-2);display:flex;align-items:center;gap:12px;margin:0 0 22px}
+.cluster-label{font-family:var(--f-mono);font-size:.82rem;letter-spacing:.12em;text-transform:none;color:var(--steel-2);display:flex;align-items:center;gap:12px;margin:0 0 22px}
 .cluster-label::after{content:"";flex:1;height:1px;background:var(--line-l)}
 .bg-navy .cluster-label,.bg-deep .cluster-label{color:var(--steel)}
 .bg-navy .cluster-label::after,.bg-deep .cluster-label::after{background:var(--line-d)}
