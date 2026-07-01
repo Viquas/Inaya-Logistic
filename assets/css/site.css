@@ -165,8 +165,8 @@ header.site{position:sticky;top:0;z-index:60}
 .bg-navy .logo-cell,.bg-deep .logo-cell{border-color:var(--line-l)}
 .logo-cell:hover{background:var(--paper)}
 .bg-navy .logo-cell:hover,.bg-deep .logo-cell:hover{background:var(--paper)}
-.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;filter:grayscale(1);opacity:.62;transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease,opacity .35s ease}
-.logo-cell:hover img{transform:scale(1.16);filter:grayscale(0);opacity:1}
+.logo-cell img{max-height:38px;max-width:84%;width:auto;height:auto;object-fit:contain;filter:grayscale(0);opacity:1;transition:transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease,opacity .35s ease}
+.logo-cell:hover img{transform:scale(1.16);filter:grayscale(1);opacity:.62}
 .logo-cell--tile img{max-height:58px;max-width:92%;border-radius:11px}
 .logo-cell svg{max-height:34px;width:auto;opacity:.9}
 .logo-cell .wordmark{font-family:var(--f-disp);font-weight:700;font-size:1.25rem;letter-spacing:-.01em;color:var(--navy)}
@@ -643,7 +643,7 @@ html.lenis,html.lenis body{height:auto}
    ===================================================================== */
 
 /* ---- hero: logo watermark + animated freight lines ---- */
-.hero-logo-bg{position:absolute;top:50%;right:-4%;transform:translateY(-50%);width:min(62%,760px);opacity:.05;pointer-events:none;z-index:0;filter:grayscale(1) brightness(2.4)}
+.hero-logo-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(70%,820px);opacity:.07;pointer-events:none;z-index:0}
 .hero-routes{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.55}
 .hero-routes .hr-line{fill:none;stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 8;opacity:.4;animation:hrdash 3.4s linear infinite}
 .hero-routes .hr-line.b{stroke:#46d18f}
@@ -688,14 +688,12 @@ html.lenis,html.lenis body{height:auto}
 @media(max-width:760px){.about-gallery{grid-template-columns:repeat(2,1fr)}.about-gallery .fg-tall{grid-row:auto;aspect-ratio:4/3}}
 
 /* ---- sticky "need transportation" quote bar ---- */
-.quotebar{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:80;display:flex;align-items:center;gap:18px;max-width:calc(100% - 28px);padding:13px 15px 13px 22px;background:var(--navy-900);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;box-shadow:0 26px 60px -24px rgba(0,0,0,.6);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.quotebar{position:fixed;left:50%;bottom:20px;transform:translate(-50%,140%);z-index:80;display:flex;align-items:center;gap:18px;max-width:calc(100% - 28px);padding:13px 15px 13px 24px;background:var(--navy-900);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;box-shadow:0 26px 60px -24px rgba(0,0,0,.6);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
 .quotebar.show{transform:translate(-50%,0);opacity:1}
 .quotebar .qb-txt{font-family:var(--f-disp);font-weight:500;font-size:1rem;letter-spacing:-.005em;line-height:1.2}
 .quotebar .qb-txt b{color:var(--red)}
 .quotebar .qb-sub{display:block;font-family:var(--f-mono);font-size:.6rem;font-weight:400;letter-spacing:.12em;color:var(--steel);margin-top:3px}
 .quotebar .btn{white-space:nowrap;padding:11px 18px}
-.quotebar .qb-close{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:#9fb0cc;cursor:pointer;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
-.quotebar .qb-close:hover{background:rgba(255,255,255,.16);color:#fff}
 @media(max-width:560px){
   .quotebar{left:14px;right:14px;transform:translate(0,160%);bottom:14px;border-radius:16px;gap:12px;padding:12px 12px 12px 16px}
   .quotebar.show{transform:translate(0,0)}

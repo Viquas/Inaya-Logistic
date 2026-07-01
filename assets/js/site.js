@@ -245,22 +245,11 @@
     });
   }
 
-  /* ---- sticky "need transportation" quote bar: appears after the fold,
-     dismissible for the session ---- */
+  /* ---- permanent "need transportation" quote bar: slides in after the
+     fold and stays (not dismissible) ---- */
   var qbar = document.getElementById('quotebar');
   if(qbar){
-    var qbarDone = false;
-    try{ qbarDone = sessionStorage.getItem('qbarDismissed') === '1'; }catch(e){}
-    var qbClose = qbar.querySelector('.qb-close');
-    if(qbClose){
-      qbClose.addEventListener('click', function(){
-        qbar.classList.remove('show');
-        qbarDone = true;
-        try{ sessionStorage.setItem('qbarDismissed','1'); }catch(e){}
-      });
-    }
     var qbTick = function(){
-      if(qbarDone){ return; }
       if(window.scrollY > 620){ qbar.classList.add('show'); }
       else { qbar.classList.remove('show'); }
     };
