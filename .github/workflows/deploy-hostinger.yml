@@ -1,0 +1,48 @@
+name: Deploy to Hostinger
+
+# Auto-deploys the static site to Hostinger shared hosting over FTP
+# on every push to main. No server-side build — just files landing in
+# the hosting web root (public_html by default).
+#
+# Required repo secrets  (Settings -> Secrets and variables -> Actions -> Secrets):
+#   FTP_SERVER    e.g. ftp.your-domain.com   or the FTP IP (82.112.228.31)
+#   FTP_USERNAME  e.g. u616083998.heysteno.com
+#   FTP_PASSWORD  the FTP account password  (never commit this)
+#
+# Optional repo variable (same screen -> Variables tab):
+#   FTP_SERVER_DIR  target folder WITH trailing slash. Defaults to public_html/
+#                   For an addon domain use e.g. domains/inayalogistics.com/public_html/
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps          # secure (FTP over TLS). Switch to "ftp" if the TLS handshake fails.
+          port: 21
+          server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
+          local-dir: ./
+          # keep production clean: skip tooling + design-iteration files
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .gitignore
+            **/*.md
+            compare.html
+            option-3.html
+            option-4.html
+            new-homepage-design-direction.html
