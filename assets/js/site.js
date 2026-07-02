@@ -291,4 +291,112 @@
     window.addEventListener('scroll', qbTick, {passive:true});
     qbTick();
   }
+
+  /* =====================================================================
+     Careers roles from a Google Sheet (client-managed, no code needed).
+
+     SETUP (one time):
+       1. Make a Google Sheet. Row 1 headers (exact order):
+            Title | Type | Location | Experience | Description
+          One role per row below.
+       2. To STOP hiring without deleting roles: put a single row whose
+          Title cell is exactly  CLOSED  (rest can be blank).
+          Or just delete all role rows — an empty sheet shows the same
+          "not hiring" message.
+       3. File -> Share -> Publish to web -> choose the sheet -> CSV ->
+          Publish. Copy that .../pub?output=csv link.
+       4. Paste it into CAREERS_SHEET_CSV below. Done.
+
+     The client only ever touches the Sheet after that. If the link is
+     empty or unreachable, the static roles already in careers.html show
+     instead (safe fallback, good for SEO / no-JS).
+     ===================================================================== */
+  var CAREERS_SHEET_CSV = ''; /* <-- paste the published CSV URL here */
+  var roleList = document.getElementById('roleList');
+  if(roleList && CAREERS_SHEET_CSV){
+    var APPLY_EMAIL = 'InayaLogistics19@gmail.com';
+
+    /* minimal RFC-4180 CSV parser (handles quoted fields, commas, newlines) */
+    function parseCSV(text){
+      var rows=[], row=[], val='', i=0, q=false, c;
+      text = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+      for(; i<text.length; i++){
+        c = text[i];
+        if(q){
+          if(c === '"'){ if(text[i+1] === '"'){ val+='"'; i++; } else { q=false; } }
+          else { val+=c; }
+        } else if(c === '"'){ q=true; }
+        else if(c === ','){ row.push(val); val=''; }
+        else if(c === '\n'){ row.push(val); rows.push(row); row=[]; val=''; }
+        else { val+=c; }
+      }
+      if(val.length || row.length){ row.push(val); rows.push(row); }
+      return rows;
+    }
+
+    function el(tag, cls, txt){
+      var e = document.createElement(tag);
+      if(cls) e.className = cls;
+      if(txt != null) e.textContent = txt;
+      return e;
+    }
+
+    function renderEmpty(){
+      roleList.textContent = '';
+      var box = el('div','role-empty reveal in');
+      box.appendChild(el('h3', null, "No open roles right now"));
+      box.appendChild(el('p', null, "We're not actively hiring at the moment — but we're always glad to hear from good people. Send us your resume and we'll reach out when the right role opens up."));
+      var a = el('a','btn btn-dark','Send your resume');
+      a.setAttribute('href','mailto:'+APPLY_EMAIL+'?subject='+encodeURIComponent('Open application - Inaya Logistics'));
+      box.appendChild(a);
+      roleList.appendChild(box);
+    }
+
+    function renderRoles(roles){
+      roleList.textContent = '';
+      roles.forEach(function(r, idx){
+        var card = el('div','role reveal in');
+        if(idx) card.style.transitionDelay = Math.min(idx*0.05, 0.3)+'s';
+        var main = el('div','role-main');
+        main.appendChild(el('h3', null, r.title));
+        var tags = el('div','role-tags');
+        [r.type, r.location, r.exp].forEach(function(t){
+          if(t) tags.appendChild(el('span','role-tag', t));
+        });
+        main.appendChild(tags);
+        if(r.desc) main.appendChild(el('p', null, r.desc));
+        card.appendChild(main);
+        var a = el('a','btn btn-dark','Apply');
+        a.setAttribute('href','mailto:'+APPLY_EMAIL+'?subject='+encodeURIComponent('Application - '+r.title));
+        var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('viewBox','0 0 24 24'); svg.setAttribute('fill','none');
+        svg.setAttribute('stroke','currentColor'); svg.setAttribute('stroke-width','2');
+        svg.setAttribute('stroke-linecap','round'); svg.setAttribute('stroke-linejoin','round');
+        var p = document.createElementNS('http://www.w3.org/2000/svg','path');
+        p.setAttribute('d','M5 12h14M13 6l6 6-6 6'); svg.appendChild(p);
+        a.appendChild(svg);
+        card.appendChild(a);
+        roleList.appendChild(card);
+      });
+    }
+
+    fetch(CAREERS_SHEET_CSV, {cache:'no-store'}).then(function(res){
+      if(!res.ok) throw new Error('sheet fetch '+res.status);
+      return res.text();
+    }).then(function(text){
+      var rows = parseCSV(text).filter(function(r){ return r.some(function(c){ return c.trim() !== ''; }); });
+      if(!rows.length) { renderEmpty(); return; }
+      var body = rows.slice(1); /* drop header row */
+      /* explicit pause: a row whose first cell is CLOSED */
+      var closed = body.some(function(r){ return (r[0]||'').trim().toUpperCase() === 'CLOSED'; });
+      var roles = body
+        .filter(function(r){ return (r[0]||'').trim() && (r[0]||'').trim().toUpperCase() !== 'CLOSED'; })
+        .map(function(r){ return { title:(r[0]||'').trim(), type:(r[1]||'').trim(), location:(r[2]||'').trim(), exp:(r[3]||'').trim(), desc:(r[4]||'').trim() }; });
+      if(closed || !roles.length){ renderEmpty(); }
+      else { renderRoles(roles); }
+    }).catch(function(err){
+      /* leave the static fallback roles already in the HTML */
+      if(window.console && console.warn){ console.warn('Careers sheet unavailable, showing default roles.', err); }
+    });
+  }
 })();
