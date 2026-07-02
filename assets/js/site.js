@@ -314,7 +314,7 @@
      empty or unreachable, the static roles already in careers.html show
      instead (safe fallback, good for SEO / no-JS).
      ===================================================================== */
-  var CAREERS_SHEET_CSV = ''; /* <-- paste the published CSV URL here */
+  var CAREERS_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1II9lhRV4Pm9NDo3nG1I8HtL5VucZTsI7fo1vdcbPab0/export?format=csv&gid=0'; /* <-- paste the published CSV URL here */
   var roleList = document.getElementById('roleList');
   if(roleList && CAREERS_SHEET_CSV){
     var APPLY_EMAIL = 'InayaLogistics19@gmail.com';
