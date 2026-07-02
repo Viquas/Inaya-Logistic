@@ -215,9 +215,8 @@ header.site{position:sticky;top:0;z-index:60}
 .journey{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line-l);border-radius:16px;overflow:hidden;background:#fff;margin-bottom:clamp(40px,5vw,56px)}
 .jstep{padding:30px 28px;position:relative;border-right:1px solid var(--line-l)}
 .jstep:last-child{border-right:none}
-.jstep .jnum{font-family:var(--f-mono);font-size:.72rem;color:var(--red-600);letter-spacing:.1em}
 .jstep .jicon{width:48px;height:48px;padding:12px;border-radius:50%;background:var(--navy);color:#fff;margin:16px 0 18px}
-.jstep h3{font-family:var(--f-disp);font-weight:500;font-size:1.12rem;letter-spacing:.005em;text-transform:none}
+.jstep h3{color:var(--navy);font-family:var(--f-disp);font-weight:500;font-size:1.12rem;letter-spacing:.005em;text-transform:none}
 .jstep p{font-size:.95rem;color:#4a5871;margin-top:9px}
 .jstep .jarrow{position:absolute;right:-9px;top:50%;width:18px;height:18px;color:var(--red);background:var(--paper);transform:translateY(-50%);z-index:2;display:flex;align-items:center;justify-content:center}
 
@@ -230,7 +229,7 @@ header.site{position:sticky;top:0;z-index:60}
 .mode:hover::before{transform:scaleX(1)}
 .mode .micon{width:48px;height:48px;padding:12px;border-radius:50%;background:var(--navy);color:#fff;margin-bottom:18px}
 .mode:hover .micon{background:var(--red)}
-.mode h3{font-family:var(--f-disp);font-weight:500;font-size:1rem;letter-spacing:.01em;text-transform:none}
+.mode h3{font-family:var(--f-disp);font-weight:500;font-size:1rem;letter-spacing:.01em;text-transform:none;color:var(--navy)}
 .mode p{font-size:.9rem;color:#4a5871;margin-top:8px}
 .mode .mlink{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;color:var(--red-600);margin-top:16px;text-decoration:none}
 .mode .mlink svg{width:14px;height:14px}
