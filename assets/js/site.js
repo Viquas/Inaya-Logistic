@@ -297,11 +297,14 @@
 
      SETUP (one time):
        1. Make a Google Sheet. Row 1 headers (exact order):
-            Title | Type | Location | Experience | Description
-          One role per row below.
-       2. To STOP hiring without deleting roles: put a single row whose
-          Title cell is exactly  CLOSED  (rest can be blank).
-          Or just delete all role rows — an empty sheet shows the same
+            Title | Type | Location | Experience | Description | Status
+          One role per row below. Status is "Open" or "Closed" —
+          only "Open" rows show on the site.
+       2. Pause ONE role: set that row's Status to "Closed" (or anything
+          other than "Open") — leave the row in the sheet, resume later
+          by switching it back.
+          Pause ALL hiring: set every row's Status to "Closed", or just
+          delete the role rows. Either way the site shows the same
           "not hiring" message.
        3. File -> Share -> Publish to web -> choose the sheet -> CSV ->
           Publish. Copy that .../pub?output=csv link.
@@ -387,12 +390,10 @@
       var rows = parseCSV(text).filter(function(r){ return r.some(function(c){ return c.trim() !== ''; }); });
       if(!rows.length) { renderEmpty(); return; }
       var body = rows.slice(1); /* drop header row */
-      /* explicit pause: a row whose first cell is CLOSED */
-      var closed = body.some(function(r){ return (r[0]||'').trim().toUpperCase() === 'CLOSED'; });
       var roles = body
-        .filter(function(r){ return (r[0]||'').trim() && (r[0]||'').trim().toUpperCase() !== 'CLOSED'; })
+        .filter(function(r){ return (r[0]||'').trim() && (r[5]||'').trim().toUpperCase() === 'OPEN'; })
         .map(function(r){ return { title:(r[0]||'').trim(), type:(r[1]||'').trim(), location:(r[2]||'').trim(), exp:(r[3]||'').trim(), desc:(r[4]||'').trim() }; });
-      if(closed || !roles.length){ renderEmpty(); }
+      if(!roles.length){ renderEmpty(); }
       else { renderRoles(roles); }
     }).catch(function(err){
       /* leave the static fallback roles already in the HTML */
