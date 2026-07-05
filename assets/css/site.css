@@ -427,6 +427,8 @@ header.site{position:sticky;top:0;z-index:60}
 .faq details[open] summary .pm::after{transform:translate(-50%,-50%) scaleY(0)}
 .faq details p{font-size:.98rem;color:#4a5871;line-height:1.66;padding:0 4px 24px;max-width:64ch}
 .bg-navy .faq details p,.bg-deep .faq details p{color:rgba(255,255,255,.7)}
+.faq details p strong{display:block;color:var(--ink);font-family:var(--f-disp);font-weight:600;font-size:1rem;letter-spacing:-.005em;margin-bottom:6px}
+.bg-navy .faq details p strong,.bg-deep .faq details p strong{color:#fff}
 
 /* ---------- footer ---------- */
 footer.site{padding-top:clamp(56px,7vw,88px);padding-bottom:40px}
