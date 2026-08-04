@@ -238,7 +238,7 @@
     var name=v('q-name'), company=v('q-company'), phone=v('q-phone'), detail=v('q-detail');
     var subject='Quote request - '+company;
     var body='Name: '+name+'\nCompany: '+company+'\nPhone: '+phone+'\n\nRequirement:\n'+detail;
-    window.location.href='mailto:InayaLogistics19@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    window.location.href='mailto:info@inayalogistics.in?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
   };
 
   var quoteSend = document.getElementById('quoteSend');
@@ -317,7 +317,7 @@
   var CAREERS_SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1II9lhRV4Pm9NDo3nG1I8HtL5VucZTsI7fo1vdcbPab0/export?format=csv&gid=0'; /* <-- paste the published CSV URL here */
   var roleList = document.getElementById('roleList');
   if(roleList && CAREERS_SHEET_CSV){
-    var APPLY_EMAIL = 'InayaLogistics19@gmail.com';
+    var APPLY_EMAIL = 'info@inayalogistics.in';
 
     /* minimal RFC-4180 CSV parser (handles quoted fields, commas, newlines) */
     function parseCSV(text){

@@ -16,4 +16,34 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
   ExpiresByType image/svg+xml "access plus 30 days"
   ExpiresByType image/webp "access plus 30 days"
   ExpiresByType font/woff2 "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType application/manifest+json "access plus 7 days"
+  ExpiresByType application/xml "access plus 1 day"
+</IfModule>
+
+# Compress text responses (faster load = better SEO / Core Web Vitals)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml application/manifest+json
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS application/xml image/svg+xml
+</IfModule>
+
+# Correct MIME types + charset
+<IfModule mod_mime.c>
+  AddType application/xml .xml
+  AddType image/svg+xml .svg
+  AddCharset UTF-8 .html .css .js .xml .svg .webmanifest
+</IfModule>
+
+# Baseline security headers (do not affect content)
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
 </IfModule>
