@@ -362,6 +362,9 @@ header.site{position:sticky;top:0;z-index:60}
 .leader p{font-size:.96rem;color:rgba(255,255,255,.72);line-height:1.62}
 .prev-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .prev-tags span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;color:var(--steel);border:1px solid var(--line-d);border-radius:999px;padding:6px 12px}
+.leader-email{display:inline-flex;align-items:center;gap:9px;margin-top:18px;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.02em;color:rgba(255,255,255,.68);text-decoration:none;transition:color .2s ease}
+.leader-email svg{width:15px;height:15px;flex:0 0 15px}
+.leader-email:hover{color:#ff9298}
 
 /* ---------- mission / vision / pillars ---------- */
 .mvv{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,60px)}
